@@ -6,4 +6,8 @@ const dapp = require('../controllers/dcontroller');
 
 route.get('/', dapp.index);
 
+//login page
+route.get('/login', dapp.login);
+
+
 module.exports = route;

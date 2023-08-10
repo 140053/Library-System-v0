@@ -19,5 +19,14 @@ controller.index = function(req, res){
     });
 }
 
+controller.login = function(req, res){    
+    res.render('pages/login',{
+        layout: 'layouts/blank',
+        title: 'Home',
+        sui:"",
+        auth: ""
+    });
+}
+
 
 module.exports = controller;
