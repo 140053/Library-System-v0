@@ -1,0 +1,99 @@
+{
+  
+  "name": "library-system-v0",
+  
+  "description": "\"# Library-System-v0\"",
+  
+  "version": "1.0.0",
+  
+  "main": "app.js",
+  
+  "scripts": {
+  
+    
+  "test": "nodemon app.js"
+  
+  },
+  
+  "repository": {
+  
+    
+  "type": "git",
+  
+    
+  "url": "git+https://github.com/140053/Library-System-v0.git"
+  
+  },
+  
+  "keywords": [
+  
+    
+  "Library",
+  
+    
+  "System"
+  
+  ],
+  
+  "author": "Kenneth Roman",
+  
+  "license": "ISC",
+  
+  "bugs": {
+  
+    
+  "url": "https://github.com/140053/Library-System-v0/issues"
+  
+  },
+  
+  "homepage": "https://github.com/140053/Library-System-v0#readme",
+  
+  "dependencies": {
+  
+    
+  "admin-lte": "3.2",
+      
+  
+    
+  "compression": "^1.7.4",
+  
+    
+  "csurf": "^1.11.0",
+  
+    
+  "dotenv": "^16.3.1",
+  
+    
+  "ejs": "^3.1.8",
+  
+    
+  "express": "^4.18.2",
+  
+    
+  "express-ejs-layouts": "^2.5.1",
+  
+    
+  "express-validator": "^7.0.1",
+  
+    
+  "helmet": "^7.0.0",
+  
+    
+    
+  "knex": "^2.5.1",
+  
+    
+  "path": "^0.12.7",
+  
+    
+  "sanitize-html": "^2.11.0"
+  
+  },
+  
+  "devDependencies": {
+  
+    
+  "nodemon": "^3.0.1"
+  
+  }
+}
