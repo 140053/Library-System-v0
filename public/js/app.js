@@ -6,5 +6,10 @@ $(document).ready(function(){
     $(".next").on('click', function(){
       stepper.next();
     })
+    $(".prev").on('click', function(){
+      stepper.previous();
+    })
+
+
 })
 
