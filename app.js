@@ -36,6 +36,7 @@ app.set('view engine', 'ejs');
 
 // Routes
 app.use('/', require("./routes/droute"));
+app.use('/catalog', require("./routes/rcataloging"));
 
 
 
