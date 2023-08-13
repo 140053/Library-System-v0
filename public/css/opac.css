@@ -1,0 +1,10 @@
+.navbar {
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    background-color: rgb(5, 66, 5);    
+}
+
+
+.container-fluid {
+    border: 5px;
+}

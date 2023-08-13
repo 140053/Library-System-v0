@@ -9,5 +9,9 @@ route.get('/', dapp.index);
 //login page
 route.get('/login', dapp.login);
 
+//OPAC
+
+route.get("/opac", dapp.opac)
+
 
 module.exports = route;
