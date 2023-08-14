@@ -50,6 +50,22 @@ function isCookieInitialized(name) {
 }
 
 
+//validate setup login page
+function validateInput(inputElement) {
+    const inputValue = inputElement.value.trim();
+  
+    // Regular expression to match only numbers
+    const regex = /^[0-9]*$/;
+  
+    if (regex.test(inputValue)) {
+      document.getElementById("errorSpan").textContent = "";
+    } else {
+      document.getElementById("errorSpan").textContent = "Please enter a valid number.";
+    }
+  }
+  
+
+
 
 // Usage example
 //setCookie('Library', 'Pili', 1);
