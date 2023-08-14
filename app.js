@@ -6,8 +6,11 @@ const path = require("path");
 //const csurf = require('csurf');
 const expressLayouts = require("express-ejs-layouts");
 //const loggerMiddleware = require('./middlewares/logger');
-const compression = require("compression");
-const knex = require("knex");
+
+const compression = require('compression');
+const knex = require('knex');
+const { route } = require('./routes/lsystem');
+
 //const knexConfig = require('./knexfile');
 
 const app = express();
@@ -35,8 +38,14 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 // Routes
-app.use("/", require("./routes/droute"));
-app.use("/catalog", require("./routes/rcataloging"));
+
+app.use('/', require("./routes/droute"));
+//cataloging1
+app.use('/catalog', require("./routes/rcataloging"));
+//login system
+app.use('/lsystem', require("./routes/lsystem"));
+
+
 
 //for none existed route
 app.use("*", function (req, res) {
