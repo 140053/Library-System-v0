@@ -1,0 +1,280 @@
+<link rel="stylesheet" href="/assets/admin-lte/plugins/dropzone/min/dropzone.min.css">
+<div class="content-wrapper" style="min-height: 1135.77px">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0"></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-9">
+                    <div id="sadd" class="card card-secondary collapsed-card">
+                        <div class="card-header">
+                            <h3 class="card-title text-uppercase font-weight-bold">
+                                Smart Add Patron
+                            </h3>
+                            <div class="card-tools">
+                                <button id="smartadd" type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                       <div class="card card-default">
+                                          <div class="card-header">
+                                             <h3 class="card-title">Dropzone.js <small><em>jQuery File Upload</em> like look</small></h3>
+                                          </div>
+                                          <div class="card-body">
+                                             <div id="actions" class="row">
+                                                <div class="col-lg-6">
+                                                   <div class="btn-group w-100">
+                                                      <span class="btn btn-success col fileinput-button">
+                                                      <i class="fas fa-plus"></i>
+                                                      <span>Add files</span>
+                                                      </span>
+                                                      <button type="submit" class="btn btn-primary col start">
+                                                      <i class="fas fa-upload"></i>
+                                                      <span>Start upload</span>
+                                                      </button>
+                                                      <button type="reset" class="btn btn-warning col cancel">
+                                                      <i class="fas fa-times-circle"></i>
+                                                      <span>Cancel upload</span>
+                                                      </button>
+                                                   </div>
+                                                </div>
+                                                <div class="col-lg-6 d-flex align-items-center">
+                                                   <div class="fileupload-process w-100">
+                                                      <div id="total-progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                                         <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="table table-striped files" id="previews">
+                                                <div id="template" class="row mt-2">
+                                                   <div class="col-auto">
+                                                      <span class="preview"><img src="data:," alt data-dz-thumbnail /></span>
+                                                   </div>
+                                                   <div class="col d-flex align-items-center">
+                                                      <p class="mb-0">
+                                                         <span class="lead" data-dz-name></span>
+                                                         (<span data-dz-size></span>)
+                                                      </p>
+                                                      <strong class="error text-danger" data-dz-errormessage></strong>
+                                                   </div>
+                                                   <div class="col-4 d-flex align-items-center">
+                                                      <div class="progress progress-striped active w-100" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                                         <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-auto d-flex align-items-center">
+                                                      <div class="btn-group">
+                                                         <button class="btn btn-primary start">
+                                                         <i class="fas fa-upload"></i>
+                                                         <span>Start</span>
+                                                         </button>
+                                                         <button data-dz-remove class="btn btn-warning cancel">
+                                                         <i class="fas fa-times-circle"></i>
+                                                         <span>Cancel</span>
+                                                         </button>
+                                                         <button data-dz-remove class="btn btn-danger delete">
+                                                         <i class="fas fa-trash"></i>
+                                                         <span>Delete</span>
+                                                         </button>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="card-footer">
+                                             Visit <a href="https://www.dropzonejs.com">dropzone.js documentation</a> for more examples and information about the plugin.
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-9">
+                    <div id="madd" class="card card-secondary">
+                        <div class="card-header">
+                            <h3 class="card-title text-uppercase font-weight-bold">
+                                Add Manual Patron
+                            </h3>
+                            <div class="card-tools">
+                                <button id="manualadd" type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <!-- form start -->
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Name</span>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="Dela Cruz, Juan B.">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">ID Number</span>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="Dela Cruz, Juan B.">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Group</span>
+                                            </div>
+                                            <select name="group" id="inputclass" class="form-control">
+                                                <option selected="">Choose...</option>
+                                                <option value="Student">Student</option>
+                                                <option value="Faculty">Faculty</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Course</span>
+                                            </div>
+                                            <select name="Kurso" id="pKurso" class="form-control" required="">
+                                                <option>Choose...</option>
+                                                <option value="BAT">Bachelor of Agricultural Technology (BAT)</option>
+                                                <option value="BSAF">Bachelor of Science in Agroforestry (BSAF)</option>
+                                                <option value="BSES">Bachelor of Science in Environmental Sciences
+                                                    (BSES)</option>
+                                                <option value="BSA">Bachelor of Science in Agriculture (BSA)</option>
+                                                <option value="BSA-AGEX">Bachelor of Science in Agriculture Major in
+                                                    Agricultural Extension (BSA-EGEX) </option>
+                                                <option value="BSA-AGR">Bachelor of Science in Agriculture Major in
+                                                    Agronomy (BSA-AGR) </option>
+                                                <option value="BSA-ANSCI">Bachelor of Science in Agriculture Major in
+                                                    Animal Science (BSA-ANSCI) </option>
+                                                <option value="BSA-ENTOM">Bachelor of Science in Agriculture Major in
+                                                    Entomology (BSA-ENTOM) </option>
+                                                <option value="BSA-FS">Bachelor of Science in Agriculture Major in
+                                                    Farming Systems (BSA-FS) </option>
+                                                <option value="BSA-HORT">Bachelor of Science in Agriculture Major in
+                                                    Horiculture (BSA-HORT) </option>
+                                                <option value="BSA-PLPT">Bachelor of Science in Agriculture Major in
+                                                    Plant Pathology (BSA-PLPT) </option>
+                                                <option value="BSA-SOIL">Bachelor of Science in Agriculture Major in
+                                                    Soil Science (BSA-SOIL) </option>
+                                                <option value="BSA-ECON">Bachelor of Science in Agriculture Major in
+                                                    Agricultural Economics (BSA-ECON) </option>
+                                                <option value="ETEEAP">Bachelor of Science in Agriculture-General
+                                                    Curriculum Extended Tertiary Education Equivalency and Accreditation
+                                                    Program (ETEEAP) </option>
+                                                <option value="BSBIO">Bachelor of Science in Biology (BS Biology)
+                                                </option>
+                                                <option value="DVM">Doctor of Veterinary Medicine (DVM) – 6 years
+                                                </option>
+                                                <option value="BSED">Bachelor of Secondary Education (BSED) </option>
+                                                <option value="BSED-ENG">Bachelor of Secondary Education Major in
+                                                    English (BSED-ENG) </option>
+                                                <option value="BSED-MATH">Bachelor of Secondary Education Major in
+                                                    Mathematics(BSED-MATH) </option>
+                                                <option value="BSED-FIL">Bachelor of Secondary Education Major in
+                                                    Filipino (BSED-FIL) </option>
+                                                <option value="BSED-BIOSCI">Bachelor of Secondary Education Major in
+                                                    Biological Science (BSED-BIOSCI) </option>
+                                                <option value="BSED-PHSCI">Bachelor of Secondary Education Major in
+                                                    Physical Science and Educational Media/Technology (BSED-PHSCI)
+                                                </option>
+                                                <option value="BEED">Bachelor of Elementary Education (BEED)</option>
+                                                <option value="BEED-CE">Bachelor of Elementary Education (BEED w/ ComEd)
+                                                </option>
+                                                <option value="BSAB">Bachelor of Science in Agribusiness (BSAB)</option>
+                                                <option value="BSAETM">Bachelor of Science in Agri-Ecotourism Mgt.
+                                                    (BSAETM)</option>
+                                                <option value="BSAE">Bachelor of Science Agricultural Engineering (BSAE)
+                                                    – 5 years</option>
+                                                <option value="BSFT">Bachelor of Science in Food Technology (BSFT)
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Year Level</span>
+                                            </div>
+                                            <select name="year" id="pyear" class="form-control" required="">
+                                                <option value="">Choose...</option>
+                                                <option value="first">First Year</option>
+                                                <option value="second">Second Year</option>
+                                                <option value="third">Third Year</option>
+                                                <option value="fourth">Fourth Year</option>
+                                                <option value="fifth">Fifth Year</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Gender</span>
+                                            </div>
+                                            <select name="gender" id="pgender" class="form-control" required="">
+                                                <option value="">Choose...</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Email</span>
+                                            </div>
+                                            <input type="email" class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary btn-block" type="button">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="/assets/admin-lte/plugins/dropzone/min/dropzone.min.js"></script>
+<script src="/js/patron/patron.js"></script>

@@ -4,7 +4,7 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title><%= title %></title>
-      <%- include('../partials/header') %>
+      <%- include('../partials/header-dtable') %>
    </head>
    <body class="dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed" style="height: auto;">
       <div class="wrapper">
@@ -15,10 +15,12 @@
          <%- include('../partials/navbar') %>
          <!-- sidebar left -->
          <%- include('../partials/sidebarl') %>
+       
          <%- body %>
          <!-- sidebar left -->
          <%- include('../partials/sidebarr') %>
-         <%- include('../partials/footer.ejs') %>
+         <%- include('../partials/footer-dtable') %>
+        
        
       </div>
    </body>

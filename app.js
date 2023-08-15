@@ -44,6 +44,8 @@ app.use('/', require("./routes/droute"));
 app.use('/catalog', require("./routes/rcataloging"));
 //login system
 app.use('/lsystem', require("./routes/lsystem"));
+//patron 
+app.use('/patron', require("./routes/patron"));
 
 
 

@@ -16,7 +16,7 @@ $(document).ready(function () {
         var Section = getCookie('Section');
 
         $('#chold').empty().text(library);
-        $('#shold').empty().text(Section);
+        //$('#shold').empty().text(Section);
 
     } else {
         console.log('Library cookie is not initialized.');
