@@ -5,9 +5,9 @@ $(document).ready(function(){
         if($("#madd").hasClass("collapsed-card") == true && $("#sadd").hasClass("collapsed-card") == true){
             $('#smartadd').trigger('click');
         }else{
-            if($("#sadd").hasClass("collapsed-card") == true){
+            //if($("#sadd").hasClass("collapsed-card") == true){
                 $('#manualadd').trigger('click');
-            }
+           // }
         }
        
     })

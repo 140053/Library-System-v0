@@ -1,11 +1,12 @@
 // app.js
 
 const express = require("express");
+const session = require('express-session');
 const helmet = require("helmet");
 const path = require("path");
 //const csurf = require('csurf');
 const expressLayouts = require("express-ejs-layouts");
-//const loggerMiddleware = require('./middlewares/logger');
+const mdl = require('./middleware/auth');
 
 const compression = require('compression');
 const knex = require('knex');
@@ -15,6 +16,14 @@ const { route } = require('./routes/lsystem');
 
 const app = express();
 //const db = knex(knexConfig.development);
+
+ // Use a cookie parsing middleware
+//session 
+app.use(session({
+  secret: 'libman',
+  resave: false,
+  saveUninitialized: true
+}));
 
 // Configuration
 require("dotenv").config(); // Load environment variables from .env
@@ -26,12 +35,13 @@ app.set("layout", "./layouts/default");
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
+//app.use(csurf({ cookie: true })); // CSRF protection
 app.use("/assets", express.static(path.join(__dirname, "node_modules")));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(helmet());
 //app.use(loggerMiddleware);
 app.use(compression()); // Gzip compression
-//app.use(csurf({ cookie: true })); // CSRF protection
+
 
 // View engine
 app.set("views", path.join(__dirname, "views"));
@@ -39,8 +49,11 @@ app.set("view engine", "ejs");
 
 // Routes
 
+
 app.use('/', require("./routes/droute"));
 //cataloging1
+
+
 app.use('/catalog', require("./routes/rcataloging"));
 //login system
 app.use('/lsystem', require("./routes/lsystem"));
@@ -49,9 +62,16 @@ app.use('/patron', require("./routes/patron"));
 
 
 
+
+//api 
+app.use("/api", require("./routes/api"))
+
 //for none existed route
 app.use("*", function (req, res) {
-  res.send("Not Found");
+  res.render("pages/error/notFound", {
+    title:"404 Not Found" ,
+    layout :"layouts/error"
+  })
 });
 
 // Start server

@@ -1,11 +1,21 @@
 
 $(document).ready(function () {
-
-    const formattedDate = getCurrentFormattedDate();
-    var dhold = document.getElementById('dholder');
-    if (dhold !== null) {
-        dhold.innerText = formattedDate;
+    function setdate(){
+        const formattedDate = getCurrentFormattedDate();
+        var dhold = document.getElementById('dholder');
+        if (dhold !== null) {
+            dhold.innerText = formattedDate;
+        }
     }
+    
+    function updateDatePeriodically() {
+        setdate();
+    }
+    
+    setdate(); // Initial call to set the date
+    
+    setInterval(updateDatePeriodically, 1000); // Call setdate() every 1000ms
+
 
 
 

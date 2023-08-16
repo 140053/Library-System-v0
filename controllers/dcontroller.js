@@ -2,6 +2,7 @@
 //const kmodel = require('../model/appModel');
 //onst indexl = require('../model/listingmodel')
 
+
 //Task object constructor
 var controller = function (task) {
   this.task = task.task;
@@ -10,21 +11,32 @@ var controller = function (task) {
 };
 
 controller.index = function (req, res) {
+  var creds = req.session.creds
+ 
   res.render("pages/index", {
     title: "Home",
-    sui: "",
+    sui: creds,
     auth: "",
   });
 };
 
 controller.login = function (req, res) {
   res.render("pages/login", {
-    layout: "layouts/blank",
-    title: "Home",
+    layout: "layouts/login",
+    title: "Login",
     sui: "",
     auth: "",
   });
 };
+
+controller.register = function(req, res){
+  res.render("pages/register", {
+    layout: "layouts/login",
+    title: "Register",
+    sui: "",
+    auth: "",
+  });
+}
 
 
 controller.opac = function(req, res){
@@ -34,6 +46,13 @@ controller.opac = function(req, res){
     sui: "",
     auth: "",
   });
+}
+
+controller.signout = function(req, res){
+  delete req.session.creds;
+  delete  req.session.isLoggedIn;
+  res.redirect('/login');
+  //console.log('Sign out');
 }
 
 module.exports = controller;
