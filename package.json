@@ -6,6 +6,7 @@
   "scripts": {
     "test": "nodemon app.js",
     "dev": "nodemon app.js",
+    "cluster": "nodemon capp.js",
     "makem": "npx knex migrate:make libman_user --knexfile ./database/knexfile.js",
     "makeup": "npx knex migrate:latest --knexfile ./database/knexfile.js",
     "downm": "npx knex migrate:down --knexfile ./database/knexfile",
@@ -39,8 +40,11 @@
     "express-validator": "^7.0.1",
     "helmet": "^7.0.0",
     "knex": "^2.5.1",
+    "loadtest": "^6.2.1",
+    "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
     "path": "^0.12.7",
+    "pm2": "^5.3.0",
     "sanitize-html": "^2.11.0"
   },
   "devDependencies": {

@@ -12,6 +12,7 @@ const compression = require('compression');
 const knex = require('knex');
 const { route } = require('./routes/lsystem');
 
+const multer = require('multer');
 //const knexConfig = require('./knexfile');
 
 const app = express();
@@ -63,8 +64,12 @@ app.use('/patron', require("./routes/patron"));
 
 
 
+
+//file Upload 
+app.use("/file", require("./routes/fileUpload"));
+
 //api 
-app.use("/api", require("./routes/api"))
+app.use("/api", require("./routes/api"));
 
 //for none existed route
 app.use("*", function (req, res) {

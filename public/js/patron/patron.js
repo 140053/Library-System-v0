@@ -31,7 +31,7 @@ var previewTemplate = previewNode.parentNode.innerHTML
 previewNode.parentNode.removeChild(previewNode)
 
 var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-  url: "/target-url", // Set the url
+  url: "/file/patron", // Set the url
   //thumbnailWidth: 80,
   thumbnailWidth: null,
   //thumbnailHeight: 80,
@@ -39,8 +39,28 @@ var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
   previewTemplate: previewTemplate,
   autoQueue: false, // Make sure the files aren't queued until manually added
   previewsContainer: "#previews", // Define the container to display the previews
-  clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+  clickable: ".fileinput-button", // Define the element that should be used as click trigger to select files.
+  maxFiles: 1,  // Limit the number of files to 1
+  acceptedFiles: ".csv",  // Accept only CSV files
 })
+
+// Hookup the success event
+myDropzone.on("success", function(file, response) {
+  // Display an alert when the upload succeeds
+  alert("File uploaded successfully!");
+  $('#uploaded-files').removeAttr("style")
+  var fileList = document.querySelector("#file-list");
+  var listItem = document.createElement("li");
+  listItem.textContent = file.name;
+  fileList.appendChild(listItem);
+});
+
+// Hookup the error event
+myDropzone.on("error", function(file, errorMessage) {
+  // Display an alert when the upload fails
+  alert("File upload failed: " + errorMessage);
+});
+
 
 myDropzone.on("addedfile", function(file) {
   // Hookup the start button
