@@ -10,4 +10,7 @@ route.get('/add', dapp.add);
 route.get('/list', dapp.list);
 
 
+route.get('/import', dapp.importCSV)
+
+
 module.exports = route;

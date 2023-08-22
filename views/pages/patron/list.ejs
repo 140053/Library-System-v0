@@ -21,34 +21,61 @@
                         <div class="card-body">                           
                             <div class="container-fluid">
                                 <div class="row">
+                                   
                                     <div class="table-responsive">
                                         <table class="table table-default" id="example">
                                             <thead>
-                                                <tr>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">ID Number</th>
-                                                    <th scope="col">Group</th>
-                                                    <th scope="col">Description</th>
-                                                    <th scope="col">Action</th>                                                    
+                                                <tr class="text-center">
+                                                    <th scope="col" class="text-center">Name</th>
+                                                    <th scope="col"  class="text-center">ID Number</th>
+                                                    <th scope="col"  class="text-center">Group</th>
+                                                    <th scope="col"  class="text-center">Description</th>
+                                                    <th scope="col"  class="text-center">Action</th>                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr class="">
-                                                    <td scope="row">R1C1</td>
-                                                    <td>R1C2</td>
-                                                    <td>R1C3</td>
-                                                    <td>R1C3</td>
-                                                    <td>R1C3</td>
-                                                </tr>
-                                                <tr class="">
-                                                    <td scope="row">Item</td>
-                                                    <td>Item</td>
-                                                    <td>Item</td>
-                                                    <td>Item</td>
-                                                    <td>Item</td>
-                                                </tr>
+                                                <% var datalen =  Object.keys(data).length %>
+                                                <% if (datalen == 1) { %>
+                                                    <tr class="text-center">
+                                                        <td scope="row"><%= data[0].name %></td>
+                                                        <td><%= data[0].IDnum %></td>
+                                                        <td><%= data[0].User_Class %></td>
+                                                        <td><%= data[0].Degree_Course %></td>
+                                                        <td>
+                                                            <div class="d-grid gap-5 col-6 mx-auto"  >
+                                                                <button type="button" class="btn btn-danger"><i class="fa fas fa-trash-alt"></i></button>                                                                
+                                                                <button type="button" class="btn btn-success"><i class="fa fas fa-edit"></i></button>
+                                                              </div> 
+                                                        </td>
+                                                    </tr>
+                                                <% } %>
+                                                <% if (datalen > 1) { %>
+                                                    <% for( let index = 0; index < datalen; index++ ) { %>
+                                                        <tr class="text-center">
+                                                            <td scope="row"><%= data[index].name %></td>
+                                                            <td><%= data[index].IDnum %></td>
+                                                            <td><%= data[index].User_Class %></td>
+                                                            <td><%= data[index].Degree_Course %></td>
+                                                            <td>
+                                                                <div class="d-grid gap-5 col-6 mx-auto"  >
+                                                                    <button type="button" class="btn btn-danger"><i class="fa fas fa-trash-alt"></i></button>                                                                
+                                                                    <button type="button" class="btn btn-success"><i class="fa fas fa-edit"></i></button>
+                                                                  </div> 
+                                                            </td>
+                                                        </tr>
+                                                    <% } %>                                                 
+                                                <% } %>
+
+                                                
+                                               
+                                                
+                                                
+                                               
+                                              
                                             </tbody>
                                         </table>
+
+                                       
                                     </div>
                                     
                                 </div>

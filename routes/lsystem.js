@@ -5,6 +5,8 @@ const dapp = require('../controllers/loginsystem');
 
 
 route.get('/', dapp.login);
+route.post('/', dapp.login);
+
 
 //login page
 route.get('/setup', dapp.setup);

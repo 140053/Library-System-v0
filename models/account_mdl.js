@@ -67,11 +67,6 @@ model.login_mdl = function (data, result) {
 
 
 
-
-
-
-
-
 }
 
 

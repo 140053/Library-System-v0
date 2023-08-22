@@ -1,12 +1,13 @@
 <div class="container">
    <div class="mt-5">
+      
       <div class="card">
          <div class="card-header text-center">
             <h2>Attendance Monitoring System</h2>
-            <b id="chold"></b>&nbsp;<b>Campus</b> 
-
+            <b id="chold"></b>&nbsp;<b>Campus</b>             
          </div>
          <div class="card-body">
+            
 
             <div class="container">
                <div class="row d-flex justify-content-center">
@@ -15,16 +16,27 @@
                   </div>
                </div>
                <div class="row d-flex justify-content-center">
-                  <div class="col-md-4">
-                     <input id="" class="form-control form-control-lg" type="text" placeholder="Student Number"   aria-label=".form-control-lg example">
-                  </div>
+                  <form method="POST" id="attForm">
+                     <div class="col-md-12">
+                        <input name="idnum" id="idnum" class="form-control form-control-lg" type="text" placeholder="Student Number"   >
+                     </div>
+                     <input id="lib" type="hidden" name="library" >
+                     <input id="sec" type="hidden" name="Section" >
+                  </form>
+                  <div id="sts" class="alert alert-success d-none" role="alert">
+                    Login Successfully!!
+                   </div>
+                 
+                  
                </div>
+              
                <div class="row row d-flex justify-content-center mt-3 ">
                   <div class="col-md-6 text-center ">
                      <img src="/img/nopix.png" class="img-fluid img-thumbnail" alt="Responsive image"
                         style="height: 509px;">
-                  </div>
+                  </div>                 
                </div>
+              
                <hr>
                <div class="row d-flex justify-content-center">
                   <div class="col-md-12 text-center">
@@ -35,18 +47,20 @@
                               <th scope="col">ID Number</th>
                               <th scope="col">Group</th>
                               <th scope="col">Description</th>
+                              <th scope="col" >Mode</th>
                               <th scope="col">Date/Time-in</th>
                               <th scope="col">Location</th>
                            </tr>
                         </thead>
                         <tbody>
                            <tr>
-                              <th scope="row">Kenneth B. Roman</th>
-                              <td>PIL-00-0000</td>
-                              <td>Staff</td>
-                              <td>Library Staff</td>
-                              <td>8/14/2023, 1:41:19 PM</td>
-                              <td>Learning Commons</td>
+                              <th id="name" scope="row">-</th>
+                              <td id="IDnum">-</td>
+                              <td id="User_Class">-</td>
+                              <td id="Degree_Course">-</td>
+                              <td id="mode">-</td>
+                              <td id="reg_date" >-</td>
+                              <td id="Section">-</td>
                            </tr>
                         </tbody>
                      </table>
