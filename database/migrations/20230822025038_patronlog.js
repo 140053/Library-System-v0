@@ -4,6 +4,7 @@ require('dotenv').config();
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
+require('dotenv').config();
 exports.up = function(knex) {
     return knex.schema.withSchema(process.env.DB_DATABASE).createTable('libman_patronlog', function (table) {
         table.increments('id').primary();

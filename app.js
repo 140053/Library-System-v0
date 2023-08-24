@@ -60,6 +60,8 @@ app.use('/catalog', require("./routes/rcataloging"));
 app.use('/lsystem', require("./routes/lsystem"));
 //patron 
 app.use('/patron', require("./routes/patron"));
+//lending 
+app.use('/lending', require("./routes/lending"));
 
 
 
