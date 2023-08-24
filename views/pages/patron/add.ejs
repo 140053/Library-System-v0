@@ -10,9 +10,12 @@
         </div>
     </div>
     <section class="content">
-        <div class="container-fluid">
-            <div class="row d-flex justify-content-center">
+        <div class="container-fluid">          
+            <div class="row d-flex justify-content-center">                
                 <div class="col-md-9">
+                    <% if (sts == true) { %>
+                        <div class="alert alert-success">Successfully Registered a Patron</div>
+                    <% } %>
                     <div id="sadd" class="card card-secondary collapsed-card">
                         <div class="card-header">
                             <h3 class="card-title text-uppercase font-weight-bold">
@@ -137,145 +140,171 @@
                         </div>
                         <div class="card-body">
                             <div class="container">
-                                <div class="row">
-                                    <!-- form start -->
-                                    <div class="col-md-6">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Name</span>
-                                            </div>
-                                            <input type="text" class="form-control" placeholder="Dela Cruz, Juan B.">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">ID Number</span>
-                                            </div>
-                                            <input type="text" class="form-control" placeholder="Dela Cruz, Juan B.">
-                                        </div>
-                                    </div>
+                                <form action="/patron/add" method="POST">
+                                    <div class="row">
+                                        <!-- form start -->
 
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Group</span>
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Name</span>
+                                                </div>
+                                                <input name="name" type="text" class="form-control" placeholder="Dela Cruz, Juan B." required="">
                                             </div>
-                                            <select name="group" id="inputclass" class="form-control">
-                                                <option selected="">Choose...</option>
-                                                <option value="Student">Student</option>
-                                                <option value="Faculty">Faculty</option>
-                                            </select>
                                         </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Course</span>
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">ID Number</span>
+                                                </div>
+                                                <input name="idnum" type="text" class="form-control" placeholder="PIL-00-0000" required="" >
                                             </div>
-                                            <select name="Kurso" id="pKurso" class="form-control" required="">
-                                                <option>Choose...</option>
-                                                <option value="BAT">Bachelor of Agricultural Technology (BAT)</option>
-                                                <option value="BSAF">Bachelor of Science in Agroforestry (BSAF)</option>
-                                                <option value="BSES">Bachelor of Science in Environmental Sciences
-                                                    (BSES)</option>
-                                                <option value="BSA">Bachelor of Science in Agriculture (BSA)</option>
-                                                <option value="BSA-AGEX">Bachelor of Science in Agriculture Major in
-                                                    Agricultural Extension (BSA-EGEX) </option>
-                                                <option value="BSA-AGR">Bachelor of Science in Agriculture Major in
-                                                    Agronomy (BSA-AGR) </option>
-                                                <option value="BSA-ANSCI">Bachelor of Science in Agriculture Major in
-                                                    Animal Science (BSA-ANSCI) </option>
-                                                <option value="BSA-ENTOM">Bachelor of Science in Agriculture Major in
-                                                    Entomology (BSA-ENTOM) </option>
-                                                <option value="BSA-FS">Bachelor of Science in Agriculture Major in
-                                                    Farming Systems (BSA-FS) </option>
-                                                <option value="BSA-HORT">Bachelor of Science in Agriculture Major in
-                                                    Horiculture (BSA-HORT) </option>
-                                                <option value="BSA-PLPT">Bachelor of Science in Agriculture Major in
-                                                    Plant Pathology (BSA-PLPT) </option>
-                                                <option value="BSA-SOIL">Bachelor of Science in Agriculture Major in
-                                                    Soil Science (BSA-SOIL) </option>
-                                                <option value="BSA-ECON">Bachelor of Science in Agriculture Major in
-                                                    Agricultural Economics (BSA-ECON) </option>
-                                                <option value="ETEEAP">Bachelor of Science in Agriculture-General
-                                                    Curriculum Extended Tertiary Education Equivalency and Accreditation
-                                                    Program (ETEEAP) </option>
-                                                <option value="BSBIO">Bachelor of Science in Biology (BS Biology)
-                                                </option>
-                                                <option value="DVM">Doctor of Veterinary Medicine (DVM) – 6 years
-                                                </option>
-                                                <option value="BSED">Bachelor of Secondary Education (BSED) </option>
-                                                <option value="BSED-ENG">Bachelor of Secondary Education Major in
-                                                    English (BSED-ENG) </option>
-                                                <option value="BSED-MATH">Bachelor of Secondary Education Major in
-                                                    Mathematics(BSED-MATH) </option>
-                                                <option value="BSED-FIL">Bachelor of Secondary Education Major in
-                                                    Filipino (BSED-FIL) </option>
-                                                <option value="BSED-BIOSCI">Bachelor of Secondary Education Major in
-                                                    Biological Science (BSED-BIOSCI) </option>
-                                                <option value="BSED-PHSCI">Bachelor of Secondary Education Major in
-                                                    Physical Science and Educational Media/Technology (BSED-PHSCI)
-                                                </option>
-                                                <option value="BEED">Bachelor of Elementary Education (BEED)</option>
-                                                <option value="BEED-CE">Bachelor of Elementary Education (BEED w/ ComEd)
-                                                </option>
-                                                <option value="BSAB">Bachelor of Science in Agribusiness (BSAB)</option>
-                                                <option value="BSAETM">Bachelor of Science in Agri-Ecotourism Mgt.
-                                                    (BSAETM)</option>
-                                                <option value="BSAE">Bachelor of Science Agricultural Engineering (BSAE)
-                                                    – 5 years</option>
-                                                <option value="BSFT">Bachelor of Science in Food Technology (BSFT)
-                                                </option>
-                                            </select>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Year Level</span>
-                                            </div>
-                                            <select name="year" id="pyear" class="form-control" required="">
-                                                <option value="">Choose...</option>
-                                                <option value="first">First Year</option>
-                                                <option value="second">Second Year</option>
-                                                <option value="third">Third Year</option>
-                                                <option value="fourth">Fourth Year</option>
-                                                <option value="fifth">Fifth Year</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Gender</span>
-                                            </div>
-                                            <select name="gender" id="pgender" class="form-control" required="">
-                                                <option value="">Choose...</option>
-                                                <option value="Male">Male</option>
-                                                <option value="Female">Female</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Email</span>
-                                            </div>
-                                            <input type="email" class="form-control" placeholder="">
-                                        </div>
-                                    </div>
 
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button class="btn btn-primary btn-block" type="button">Submit</button>
                                     </div>
-                                </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Group</span>
+                                                </div>
+                                                <select name="group" id="inputclass" class="form-control" required="">
+                                                    <option selected="">Choose...</option>
+                                                    <option value="Student">Student</option>
+                                                    <option value="Faculty">Faculty</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Course</span>
+                                                </div>
+                                                <select name="Kurso" id="pKurso" class="form-control" required="">
+                                                    <option>Choose...</option>
+                                                    <option value="BAT">Bachelor of Agricultural Technology (BAT)</option>
+                                                    <option value="BSAF">Bachelor of Science in Agroforestry (BSAF)</option>
+                                                    <option value="BSES">Bachelor of Science in Environmental Sciences
+                                                        (BSES)</option>
+                                                    <option value="BSA">Bachelor of Science in Agriculture (BSA)</option>
+                                                    <option value="BSA-AGEX">Bachelor of Science in Agriculture Major in
+                                                        Agricultural Extension (BSA-EGEX) </option>
+                                                    <option value="BSA-AGR">Bachelor of Science in Agriculture Major in
+                                                        Agronomy (BSA-AGR) </option>
+                                                    <option value="BSA-ANSCI">Bachelor of Science in Agriculture Major in
+                                                        Animal Science (BSA-ANSCI) </option>
+                                                    <option value="BSA-ENTOM">Bachelor of Science in Agriculture Major in
+                                                        Entomology (BSA-ENTOM) </option>
+                                                    <option value="BSA-FS">Bachelor of Science in Agriculture Major in
+                                                        Farming Systems (BSA-FS) </option>
+                                                    <option value="BSA-HORT">Bachelor of Science in Agriculture Major in
+                                                        Horiculture (BSA-HORT) </option>
+                                                    <option value="BSA-PLPT">Bachelor of Science in Agriculture Major in
+                                                        Plant Pathology (BSA-PLPT) </option>
+                                                    <option value="BSA-SOIL">Bachelor of Science in Agriculture Major in
+                                                        Soil Science (BSA-SOIL) </option>
+                                                    <option value="BSA-ECON">Bachelor of Science in Agriculture Major in
+                                                        Agricultural Economics (BSA-ECON) </option>
+                                                    <option value="ETEEAP">Bachelor of Science in Agriculture-General
+                                                        Curriculum Extended Tertiary Education Equivalency and Accreditation
+                                                        Program (ETEEAP) </option>
+                                                    <option value="BSBIO">Bachelor of Science in Biology (BS Biology)
+                                                    </option>
+                                                    <option value="DVM">Doctor of Veterinary Medicine (DVM) – 6 years
+                                                    </option>
+                                                    <option value="BSED">Bachelor of Secondary Education (BSED) </option>
+                                                    <option value="BSED-ENG">Bachelor of Secondary Education Major in
+                                                        English (BSED-ENG) </option>
+                                                    <option value="BSED-MATH">Bachelor of Secondary Education Major in
+                                                        Mathematics(BSED-MATH) </option>
+                                                    <option value="BSED-FIL">Bachelor of Secondary Education Major in
+                                                        Filipino (BSED-FIL) </option>
+                                                    <option value="BSED-BIOSCI">Bachelor of Secondary Education Major in
+                                                        Biological Science (BSED-BIOSCI) </option>
+                                                    <option value="BSED-PHSCI">Bachelor of Secondary Education Major in
+                                                        Physical Science and Educational Media/Technology (BSED-PHSCI)
+                                                    </option>
+                                                    <option value="BEED">Bachelor of Elementary Education (BEED)</option>
+                                                    <option value="BEED-CE">Bachelor of Elementary Education (BEED w/ ComEd)
+                                                    </option>
+                                                    <option value="BSAB">Bachelor of Science in Agribusiness (BSAB)</option>
+                                                    <option value="BSAETM">Bachelor of Science in Agri-Ecotourism Mgt.
+                                                        (BSAETM)</option>
+                                                    <option value="BSAE">Bachelor of Science Agricultural Engineering (BSAE)
+                                                        – 5 years</option>
+                                                    <option value="BSFT">Bachelor of Science in Food Technology (BSFT)
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Year Level</span>
+                                                </div>
+                                                <select name="year" id="pyear" class="form-control" required="">
+                                                    <option value="">Choose...</option>
+                                                    <option value="first">First Year</option>
+                                                    <option value="second">Second Year</option>
+                                                    <option value="third">Third Year</option>
+                                                    <option value="fourth">Fourth Year</option>
+                                                    <option value="fifth">Fifth Year</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Gender</span>
+                                                </div>
+                                                <select name="gender" id="pgender" class="form-control" required="">
+                                                    <option value="">Choose...</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Email</span>
+                                                </div>
+                                                <input name="email" type="email" class="form-control" placeholder="" required="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Campus</span>
+                                                </div>
+                                                <select name="campus" id="inputclass" class="form-control" required="">
+                                                    <option selected="">Choose...</option>
+                                                    <option value="Pili">Pili Campus</option>
+                                                    <option value="Pasacao">Pasacao Campus</option>
+                                                    <option value="Calabanga">Calabanga Campus</option>                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Address</span>
+                                                </div>
+                                                <input name="address" type="text" class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

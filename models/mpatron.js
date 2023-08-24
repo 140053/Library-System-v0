@@ -32,6 +32,28 @@ var model = function (task) {
 };
 
 
+
+//POST model for form insert patron 
+
+model.ingestPatron = function(data, result){
+    db("libman_patron")
+    .insert({
+        name: data.name,
+        address: data.address,
+        Degree_Course: data.Kurso,
+        User_Class: data.group,
+        Year_Level: data.year,
+        IDnum: data.idnum,
+        email: data.email,
+        gender: data.gender,
+        campus: data.campus
+    })
+    .then(function(res){
+        result(null, true)
+    })
+}
+
+
 //patronlog insert
 model.ingestPatronlog = function(data, result){
     // data = { idnum: '00-0000', library: 'Pili', Section: 'gfloor' }
@@ -63,8 +85,10 @@ model.updateModeExit = async function(data, result){
 
 //check patron mode
 model.getPatronByID = function(data, result){
+    var id = data.idnum;
+    var idnum = "%" + id + "%";
     db("libman_patron")
-    .where({'IDnum': data.idnum}) 
+    .where({IDnum: id} ) 
     .first()  
     .then(function(res){
         result(null, res);
@@ -114,6 +138,13 @@ model.importCSV = async function (fname, result) {
             readableStream
                 .pipe(csv())
                 .on('data', async row => {
+                    // Remove extra spaces from each value
+                    for (const key in row) {
+                        if (row.hasOwnProperty(key) && typeof row[key] === 'string') {
+                            row[key] = row[key].trim(); // Remove leading and trailing spaces
+                        }
+                    }
+
                     const query = 'INSERT INTO libman_patron (name, address,	Degree_Course,	User_Class,	Year_Level,	IDnum,	DateApplied,	DateExpired,	email,	gender,	campus  ) VALUES (?, ?, ?,?,?,?,?,?,?,?,?)';
                     const values = [
                         row.name,

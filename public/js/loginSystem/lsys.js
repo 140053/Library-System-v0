@@ -46,6 +46,7 @@ $(document).ready(function () {
         $('#chold').empty().text(library);
         $('#lib').empty().val(library);
         $('#sec').empty().val(Section);
+        $('#floor').empty().text(Section);
        
 
     } else {

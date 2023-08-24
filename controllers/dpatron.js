@@ -16,8 +16,24 @@ controller.add = function(req, res){
         //layout: 'layouts/lsys',
         title: 'Add Patron',
         sui:"",
-        auth: ""
+        auth: "",
+        sts: null
     });
+}
+
+// POST handle for form submit 
+
+controller.manualAddPatron = function(req, res){
+    var data = req.body;
+    pmodel.ingestPatron( data, function(err, result ){
+        res.render('pages/patron/add',{
+            //layout: 'layouts/lsys',
+            title: 'Add Patron',
+            sui:"",
+            auth: "",
+            sts: result
+        });
+    })
 }
 
 controller.list = function(req, res){

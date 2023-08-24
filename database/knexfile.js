@@ -8,10 +8,10 @@ module.exports = {
   development: {
     client: 'mysql',
     connection: {
-      host : 'localhost',
+      host : '10.2.42.53',
       port : 3306,
       user : 'root',
-      password : '',
+      password : '140053ken',
       database : 'libmanV0'
     }
   },
