@@ -1,0 +1,309 @@
+<div class="content-wrapper" style="min-height: 274px;">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">List of Items</h1>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="card">
+                        <div class="card-header border-transparent">
+                            <h3 class="card-title">Board Games</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table m-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Item Code</th>
+                                            <th>Item Name</th>
+                                            <th>In-Circulation</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% var datalen=Object.keys(data).length %>
+                                            <% if (datalen>= 1 ) { %>                                               
+                                                <% for( let index=0; index < datalen; index++ ) { %>
+                                                    <% if (data[index].type == 'boardgames' ) { %>
+                                                        <tr>
+                                                            <td><a href="">
+                                                                    <%= data[index].code %>
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                <%= data[index].name %>
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge badge-success">
+                                                                    <%= data[index].status %>
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <button id="<%= data[index].code %>" class="btn btn-danger adel0"><i class="fas fa-trash"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                    <% } %>                                                    
+                                                <% } %>
+                                            <% } %>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer clearfix">
+                            <a id="addItem" class="btn btn-sm btn-info float-left">Add New</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All</a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="card">
+                        <div class="card-header border-transparent">
+                            <h3 class="card-title">Computers</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table m-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Item Code</th>
+                                            <th>Item Name</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% var datalen=Object.keys(data).length %>
+                                        <% if (datalen>= 1 ) { %>                                               
+                                            <% for( let index=0; index < datalen; index++ ) { %>
+                                                <% if (data[index].type == 'computer' ) { %>
+                                                    <tr>
+                                                        <td><a href="">
+                                                                <%= data[index].code %>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <%= data[index].name %>
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge badge-success">
+                                                                <%= data[index].status %>
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <button id="<%= data[index].code %>" class="btn btn-danger adel1"><i class="fas fa-trash"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                <% } %>                                                    
+                                            <% } %>
+                                        <% } %>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer clearfix">
+                            <a id="addItem1" class="btn btn-sm btn-info float-left">Add New</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="card">
+                        <div class="card-header border-transparent">
+                            <h3 class="card-title">Locker</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table m-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Item Code</th>
+                                            <th>Item Name</th>
+                                            <th>In-Circulation</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% var datalen=Object.keys(data).length %>
+                                        <% if (datalen>= 1 ) { %>                                               
+                                            <% for( let index=0; index < datalen; index++ ) { %>
+                                                <% if (data[index].type == 'key' ) { %>
+                                                    <tr>
+                                                        <td><a href="">
+                                                                <%= data[index].code %>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <%= data[index].name %>
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge badge-success">
+                                                                <%= data[index].status %>
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <button id="<%= data[index].code %>" class="btn btn-danger adel2 "><i class="fas fa-trash"></i></button>
+                                                        </td>
+                                                       
+                                                    </tr>
+                                                <% } %>                                                    
+                                            <% } %>
+                                        <% } %>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer clearfix">
+                            <a id="addItem2" class="btn btn-sm btn-info float-left">Add New</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All</a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="card">
+                        <div class="card-header border-transparent">
+                            <h3 class="card-title">Equipment</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table m-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Item Code</th>
+                                            <th>Item Name</th>
+                                            <th>Status</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                            <td>Call of Duty IV</td>
+                                            <td><span class="badge badge-success">Shipped</span></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer clearfix">
+                            <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All
+                                Orders</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<script src="/js/lendingMaster/item.js"></script>
+
+
+<!-- MODALS -->
+
+<div class="modal fade" id="modal-default" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Items</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form action="/lending/add" method="post">
+            <div class="modal-body">
+                
+                    <input type="hidden" name="type" id="itype">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Name</span>
+                        </div>
+                        <input type="text" class="form-control" name="name"  required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Code</span>
+                        </div>
+                        <input type="text" class="form-control" name="code" required>
+                    </div>
+               
+
+
+
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>

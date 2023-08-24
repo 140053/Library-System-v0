@@ -1,0 +1,4 @@
+$(function() {
+  $('#nonlogged').modal('show'); 
+});
+

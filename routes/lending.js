@@ -4,14 +4,19 @@ const dapp = require('../controllers/dlending');
 const mdl = require("../middleware/auth")
 
 
-
+//transaction page
 route.get('/',mdl.isLogin, dapp.index);
-
-
+//hanlde transaction request
 route.post('/lend', dapp.lend);
-
 route.post('/save', dapp.save);
 
+//Locker 
+route.get('/locker',mdl.isLogin, dapp.locker);
+
+//list of items 
+route.get("/items", dapp.listItem);
+//add item
+route.post("/add", dapp.addItem);
 
 
 

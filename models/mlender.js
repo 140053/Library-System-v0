@@ -18,12 +18,46 @@ var model = function(task){
 model.getBoardgames = function(result){
     db("libman_lendTrans")
     .where('action', 'borrow')
+    .whereRaw('tname != ?', ['key'])  
+    .whereNull("reg_return")    
+    .then(function(resp) {
+        result(null, resp)
+    });
+}
+
+//get list of borrowed Locker
+model.getBoardgames1 = function(result){
+    db("libman_lendTrans")
+    .where('action', 'borrow')
+    .whereRaw('tname = ?', ['key']) 
     .whereNull("reg_return")
     .then(function(resp) {
         result(null, resp)
     });
 }
 
+//get list of  boardgames
+model.getAllBoardgames = function(result){
+    db("libman_boardgames")    
+    .then(function(resp) {
+        result(null, resp)
+    });
+}
+
+//Add item model
+model.addBoardgames =function(data, result){
+    db("libman_boardgames")
+    .insert({
+        code: data.code,
+        name: data.name,
+        type: data.type,
+        status: "true"
+             
+    })
+    .then(function(res){
+        result(null, res);
+    })
+}
 
 //getpatron
 model.getpatronbyIDTotaday = function (id, result){

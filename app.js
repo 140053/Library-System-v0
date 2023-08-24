@@ -2,13 +2,13 @@
 
 const express = require("express");
 const session = require('express-session');
-const helmet = require("helmet");
+//const helmet = require("helmet");
 const path = require("path");
 //const csurf = require('csurf');
 const expressLayouts = require("express-ejs-layouts");
 const mdl = require('./middleware/auth');
 
-const compression = require('compression');
+//const compression = require('compression');
 const knex = require('knex');
 const { route } = require('./routes/lsystem');
 
@@ -39,9 +39,9 @@ app.use(express.urlencoded({ extended: true }));
 //app.use(csurf({ cookie: true })); // CSRF protection
 app.use("/assets", express.static(path.join(__dirname, "node_modules")));
 app.use(express.static(path.join(__dirname, "public")));
-app.use(helmet());
+////app.use(helmet());
 //app.use(loggerMiddleware);
-app.use(compression()); // Gzip compression
+//app.use(compression()); // Gzip compression
 
 
 // View engine
@@ -52,9 +52,8 @@ app.set("view engine", "ejs");
 
 
 app.use('/', require("./routes/droute"));
+
 //cataloging1
-
-
 app.use('/catalog', require("./routes/rcataloging"));
 //login system
 app.use('/lsystem', require("./routes/lsystem"));
