@@ -17,6 +17,8 @@ route.get('/locker',mdl.isLogin, dapp.locker);
 route.get("/items", dapp.listItem);
 //add item
 route.post("/add", dapp.addItem);
+route.get("/del/:id", dapp.delItem)
+route.get("/return/:id/:uid", dapp.returnItem)
 
 
 

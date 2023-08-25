@@ -12,7 +12,7 @@ var controller = function (task) {
 
 controller.index = function (req, res) {
     var creds = req.session.creds
-    if(!creds){ res.redirect("/")}
+    if (!creds) { res.redirect("/") }
     lendModel.getBoardgames(function (err, res0) {
         res.render("pages/lending/index", {
             title: "Home",
@@ -20,13 +20,52 @@ controller.index = function (req, res) {
             auth: "",
             lender: res0,
             data: [],
-            sts:false
+            sts: false
         });
     })
 };
+
+controller.returnItem = function(req, res){
+    var id = req.params.id;
+    var uid = req.params.uid;
+    if(id != '', uid != ''){
+        lendModel.returnBorrow(req.params, function(err, res0){
+            res.redirect('/lending')
+        })
+
+    }else{
+        res.redirect('/lending');
+    }
+}
+
+controller.delItem = function (req, res) {
+    var id = req.params.id;
+    if (id != '') {
+        var creds = req.session.creds
+        if (!creds) { res.redirect("/") }
+        lendModel.delByID(id, function(err, res00){
+            lendModel.getAllBoardgames(function (err, res0) {
+                var sts = false
+                if(res00){ sts = true;  }
+                res.render("pages/lending/items", {
+                    title: "Item - Lending Master",
+                    sui: creds,
+                    auth: "",
+                    lender: [],
+                    data: res0,
+                    sts: sts
+                });
+            })
+        })
+       
+
+    } else {
+        res.redirect("/lending/items")
+    }
+}
 controller.locker = function (req, res) {
     var creds = req.session.creds
-    if(!creds){ res.redirect("/")}
+    if (!creds) { res.redirect("/") }
     lendModel.getBoardgames1(function (err, res0) {
         res.render("pages/lending/index", {
             title: "Home",
@@ -34,7 +73,7 @@ controller.locker = function (req, res) {
             auth: "",
             lender: res0,
             data: [],
-            sts:false
+            sts: false
         });
     })
 };
@@ -59,7 +98,7 @@ controller.save = function (req, res) {
 
 controller.lend = function (req, res) {
     var creds = req.session.creds
-    if(!creds){ res.redirect("/")}
+    if (!creds) { res.redirect("/") }
     var id = req.body.id;
     var type = req.body.type;
     if (type == 'SID') {
@@ -74,7 +113,7 @@ controller.lend = function (req, res) {
                 sts: true
             });
         })
-    }else{
+    } else {
         //return 
         res.render("pages/lending/index", {
             title: "Lending Master",
@@ -82,16 +121,16 @@ controller.lend = function (req, res) {
             auth: "",
             lender: [],
             data: [],
-            sts:false
+            sts: false
         });
 
     }
 }
 
-controller.listItem = function (req, res){
+controller.listItem = function (req, res) {
     var creds = req.session.creds
-    if(!creds){ res.redirect("/")}
-    lendModel.getAllBoardgames(function(err, res0){
+    if (!creds) { res.redirect("/") }
+    lendModel.getAllBoardgames(function (err, res0) {
         res.render("pages/lending/items", {
             title: "Item - Lending Master",
             sui: creds,
@@ -100,7 +139,7 @@ controller.listItem = function (req, res){
             data: res0
         });
     })
-    
+
 }
 
 
@@ -108,13 +147,13 @@ controller.listItem = function (req, res){
 
 controller.addItem = function (req, res) {
     var creds = req.session.creds
-    if(!creds){ res.redirect("/")}
+    if (!creds) { res.redirect("/") }
     var data = req.body;
     console.log(data)
-    lendModel.addBoardgames(data, function(err, res0){
+    lendModel.addBoardgames(data, function (err, res0) {
         res.redirect('/lending/items')
     })
-    
+
 }
 
 

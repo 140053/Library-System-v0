@@ -28,7 +28,7 @@
 
                     .warp {
                         display: grid;
-                        grid-template-columns: repeat(5, 1fr);
+                        grid-template-columns: repeat(10, 1fr);
                         gap: 10px;
                     }
                 </style>
@@ -93,7 +93,7 @@
                                                                     <li> Course: <%= //lender[i].course %></li>
                                                                     <li>BG ID: <%= lender[i].tcode.toUpperCase() %> </li>
                                                                 </ul>
-                                                                <button  id="<%= lender[i].id %>"  onclick="lenderReturn(this.id,'<%=lender[i].tcode  %>',null,null)" class="btn btn-primary btn-block">return</button>
+                                                                <a href="/lending/return/<%= lender[i].tcode %>/<%= lender[i].idnum %>"   class="btn btn-primary btn-block">return</a
                                                             </div>
                                                     </div>
                                                 <% } %>
