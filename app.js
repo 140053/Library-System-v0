@@ -65,7 +65,8 @@ app.use('/lending', require("./routes/lending"));
 
 
 
-
+//Reports
+app.use("/reports/", require("./routes/reports"));
 //file Upload 
 app.use("/file", require("./routes/fileUpload"));
 

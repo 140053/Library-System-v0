@@ -26,9 +26,9 @@
                         background-color: #444444;
                     }
 
-                    .warp {
+                    .wrappe {
                         display: grid;
-                        grid-template-columns: repeat(5, 1fr);
+                        grid-template-columns: repeat(6, 1fr);
                         gap: 10px;
                     }
                 </style>
@@ -58,17 +58,17 @@
                                         </div>
                                         <hr>
 
-                                        <div class="warp">
+                                        <div class="wrappe ">
                                             <% if (Object.keys(lender).length != 0) {%>
                                                 <% for (var i = 0; i < Object.keys(lender).length; i++) { %>
                                                     <div class="card" >
-                                                        <% if (lender[i].tname === 'scrabble') {%>
-                                                            <img class="card-img-top" src="/img/SC.png" alt="Card image cap" >
-                                                        <% } %>
-                
-                                                        <% if (lender[i].tname === 'gog') {%>
-                                                            <img class="card-img-top" src="/img/GOG.png" alt="Card image cap" >
-                                                        <% } %>
+                                                            <% if (lender[i].tname === 'scrabble') {%>
+                                                                <img class="card-img-top" src="/img/SC.png" alt="Card image cap" >
+                                                            <% } %>
+                    
+                                                            <% if (lender[i].tname === 'gog') {%>
+                                                                <img class="card-img-top" src="/img/GOG.png" alt="Card image cap" >
+                                                            <% } %>
                 
                                                             <% if (lender[i].tname === 'chess') {%>
                                                                 <img class="card-img-top" src="/img/chess.png" alt="Card image cap" >
@@ -93,11 +93,13 @@
                                                                     <li> Course: <%= //lender[i].course %></li>
                                                                     <li>BG ID: <%= lender[i].tcode.toUpperCase() %> </li>
                                                                 </ul>
-                                                                <button  id="<%= lender[i].id %>"  onclick="lenderReturn(this.id,'<%=lender[i].tcode  %>',null,null)" class="btn btn-primary btn-block">return</button>
+                                                                <a href="/lending/return/<%= lender[i].tcode %>/<%= lender[i].idnum %>"   class="btn btn-primary btn-block">return</a>
                                                             </div>
                                                     </div>
+                                                    
                                                 <% } %>
                                             <% } %>
+                                        </div>
                 
                 
                                         </div>
