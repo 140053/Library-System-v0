@@ -30,6 +30,24 @@ model.returnBorrow = function (data, result) {
         });
 }
 
+model.returnBorrowBYID = function(data, result){
+    var data = data;
+    db("libman_lendTrans")
+    .where({
+        tcode: data.id,
+        action: "borrow"        
+    })
+    .whereNull('reg_return')
+    .update({
+        action: 'return'
+    })
+    .then(function (resp) {
+        result(null, true)
+    });
+}
+
+
+
 //delete items by id 
 
 model.delByID = function (id, result) {

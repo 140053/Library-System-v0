@@ -206,7 +206,8 @@ model.getPatronToday = function(result){
         )
         .leftJoin('libman_patron', 'libman_patronlog.pid', '=', 'libman_patron.IDnum')
         .where("reg_in", "like", datemonth2)
-        .orderByRaw('reg_in DESC')
+        .orderBy('reg_in', 'desc')
+        //.orderByRaw('reg_in DESC')
         //.andWhere("campus", "Pili")        
         .then(function(res) {
             result(null, res);

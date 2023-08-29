@@ -8,7 +8,10 @@ const mdl = require("../middleware/auth")
 route.get('/',mdl.isLogin, dapp.index);
 //hanlde transaction request
 route.post('/lend', dapp.lend);
+route.post('/lendlock', dapp.lendlock);
+
 route.post('/save', dapp.save);
+route.post('/savel', dapp.savel);
 
 //Locker 
 route.get('/locker',mdl.isLogin, dapp.locker);
@@ -19,6 +22,7 @@ route.get("/items", dapp.listItem);
 route.post("/add", dapp.addItem);
 route.get("/del/:id", dapp.delItem)
 route.get("/return/:id/:uid", dapp.returnItem)
+
 
 
 
