@@ -1,0 +1,116 @@
+<div class="content-wrapper" style="min-height: 274px;">
+    <div class="content-header">
+       <div class="container-fluid">
+          <div class="row mb-2">
+             <div class="col-sm-6">
+                <h1 class="m-0">Dashboard v2</h1>
+             </div>
+             <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                   <li class="breadcrumb-item"><a href="#">Home</a></li>
+                   <li class="breadcrumb-item active">Dashboard v2</li>
+                </ol>
+             </div>
+          </div>
+       </div>
+    </div>
+    <section class="content">
+       <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-10 col-sm-10">
+                <div class="align-content-center">
+                    <div class="card">
+                        <div class="card-body">
+    
+    
+                            <ul class="list-group">
+                                <li class="list-group-item active">PATRON BY COURSE THIS MONTH OF <b class="montholder">AUGUST</b></li>
+                                <li id="patroninfo" class="list-group-item">
+                                    <div class="card">
+                                        <div class="card-header">
+                                           GENERAL CIRCULATION
+                                        </div>
+                                        <canvas id="myChart" width="1238" height="185" style="display: block; box-sizing: border-box; height: 185px; width: 1238px;"></canvas>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header">
+                                            LEARNING COMMONS
+                                        </div>
+                                        <canvas id="myChart1" width="1238" height="185" style="display: block; box-sizing: border-box; height: 185px; width: 1238px;"></canvas>
+                                    </div>
+    
+                                    <div class="btn-group d-flex justify-content-center" role="group">
+                                        <div class="card m-2" style="width: 20rem;">
+                                            <div class="card-header">
+                                                GENDER
+                                            </div>
+                                            <canvas id="myChart3" width="320" height="320" style="display: block; box-sizing: border-box; height: 320px; width: 320px;"></canvas>
+                                        </div>
+                                        <div class="card m-2" style="width: 20rem;">
+                                            <div class="card-header">
+                                                GROUP
+                                            </div>
+                                            <canvas id="myChart4" width="320" height="320" style="display: block; box-sizing: border-box; height: 320px; width: 320px;"></canvas>
+                                        </div>
+                                        <div class="card m-2" style="width: 20rem;">
+                                            <div class="card-header">
+                                                Library Sections
+                                            </div>
+                                            <canvas id="myChart5" width="320" height="320" style="display: block; box-sizing: border-box; height: 320px; width: 320px;"></canvas>
+                                        </div>
+    
+                                    </div>
+                                    <div class="card m-2">
+                                        <div class="card-header">
+                                            EXPORT DATA FOR PATRON
+                                        </div>
+                                        <form action="/api/exportdata" method="post">
+                                            <div class="form-row m-2">
+                                                <div class="form-group col-md-6 col-xl-6 col-lg-6 col-sm-6">
+                                                    <label class="">FROM:</label>
+                                                    <input class="form-control" name="datefrom" type="date" required="">
+                                                </div>
+                                                <div class="form-group col-md-6 col-xl-6 col-lg-6 col-sm-6">
+                                                    <label class="">TO:</label>
+                                                    <input class="form-control" name="dateto" type="date" required="">
+                                                </div>
+                                            </div>
+                                            <div class="form-row m-2">
+                                                <div class="form-group col-md-12 col-xl-12 col-lg-12 col-sm-12 ">
+                                                    <button type="submit" class="btn btn-block btn-info">EXPORT DATA</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>
+    
+                            </ul>
+                            <ul class="list-group mt-1">
+                                <li class="list-group-item active">RESOURCES BY THIS MONTH OF <b class="montholder">AUGUST</b></li>
+                                <li id="patroninfo" class="list-group-item">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            RESOURCES
+                                        </div>
+                                        <canvas id="myChart2" width="1238" height="185" style="display: block; box-sizing: border-box; height: 185px; width: 1238px;"></canvas>
+                                    </div>
+    
+    
+    
+                                </li>
+    
+                            </ul>
+    
+                        </div>
+                    </div>
+    
+                </div>
+    
+            </div>
+        </div>
+        
+       </div>
+    </section>
+    
+ </div>
+   

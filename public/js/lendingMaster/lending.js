@@ -16,8 +16,13 @@ $('#idin').on('keyup', function (){
     if (bal.toUpperCase().match("SC")){
         $('#typeid').val('bgame')
     }
+
     if (bal.toUpperCase().match("-")){
         $('#typeid').val('SID')
+    }
+
+    if (bal.toUpperCase().match("LK")){
+        $('#typeid').val('LK')
     }
 
 })
