@@ -245,5 +245,33 @@ model.getPatronMonth = function(result){
         });
 }
 
+model.getPatronLC = function(result){
+    var dt = new Date();
+    var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +'%'
+    db("libman_patronlog")
+        .select(           
+            'libman_patron.name as name',
+            'libman_patron.Degree_Course as Degree_Course',
+            'libman_patronlog.campus as campus',
+            'libman_patronlog.section as section',
+            'libman_patronlog.mode as mode',
+            'libman_patronlog.reg_in as reg_in',
+            'libman_patronlog.modeOut as mode_out',
+            'libman_patronlog.reg_out as reg_out'
+        )
+        .leftJoin('libman_patron', 'libman_patronlog.pid', '=', 'libman_patron.IDnum')
+        .where("reg_in", "like", datemonth2)
+        .andWhereLike('section', 'Second%')
+        .orderByRaw('reg_in DESC')
+        //.andWhere("campus", "Pili")        
+        .then(function(res) {
+            result(null, res);
+        })
+        .catch(function(err) {
+            result(err, null);
+        });
+}
+
+
 
 module.exports = model;
