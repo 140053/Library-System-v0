@@ -39,6 +39,21 @@ controller.patronMonth = function(req, res ){
     
 }
 
+controller.patronByFloor = function(req, res ){
+    //var creds = req.session.creds
+   // if(!creds){ res.redirect("/")}
+   db.getPatronLC(function(err, result){
+   //console.log(result)
+        res.render("pages/reports/patron-today",{
+            title: "Patron Reports Today",
+            sui: "", //creds,
+            auth: "",
+            data: result
+        })
+   })
+    
+}
+
 controller.patronToday_api = function(req, res ){
     //var creds = req.session.creds
    // if(!creds){ res.redirect("/")}
