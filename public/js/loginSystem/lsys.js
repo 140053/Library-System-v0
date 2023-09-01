@@ -58,8 +58,10 @@ $(document).ready(function () {
     //submit form
     $("#idnum").keypress(function (event) {
         if (event.which === 13) { // 13 corresponds to the Enter key
+            //alert("here");
             event.preventDefault();
             $("#attForm").submit();
+            
         }
         if( $('#sts').hasClass('d-none') == false){
             $('#sts').addClass('d-none')
@@ -71,6 +73,7 @@ $(document).ready(function () {
 
     $('#attForm').submit(function (event) {
         event.preventDefault();
+        //alert("submit")
 
         $.ajax({
             type: "POST", // or "GET" depending on your form method
@@ -78,7 +81,7 @@ $(document).ready(function () {
             data: $(this).serialize(), // Serialize form data
             success: function (response) {
                 // Handle the success response from the server
-                //console.log("Form submitted successfully:", response);
+                console.log("Form submitted successfully:", response);
                 if(response.status == true){
                     $('#sts').removeClass().addClass('alert alert-success').text('Login Successfull');
                     $("#idnum").empty().val('');
