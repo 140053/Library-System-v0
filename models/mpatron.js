@@ -55,19 +55,29 @@ model.ingestPatron = function(data, result){
 
 
 //patronlog insert
-model.ingestPatronlog = function(data, result){
-    // data = { idnum: '00-0000', library: 'Pili', Section: 'gfloor' }
+model.ingestPatronlog = function(data, result) {
+    if (!data.date || !data.idnum || !data.library || !data.Section || !data.mode) {
+        result("Missing required data fields", null);
+        return;
+    }
+
+    var ndate = data.date + ' 00:00:00'; // Corrected date format
     db("libman_patronlog")
-    .insert({
-        pid: data.idnum,
-        campus: data.library,
-        section: data.Section,
-        mode: data.mode
-    })
-    .then(function(res){
-        result(null, true)
-    })
-}
+        .insert({
+            pid: data.idnum,
+            campus: data.library,
+            section: data.Section,
+            mode: data.mode,
+            reg_in: ndate
+        })
+        .then(function(res) {
+            result(null, true);
+        })
+        .catch(function(err) {
+            result(err, null);
+        });
+};
+
 
 //patron update mode to exit
 model.updateModeExit = async function(data, result){
@@ -244,6 +254,34 @@ model.getPatronMonth = function(result){
             result(err, null);
         });
 }
+
+model.getPatronLMonth = function(result){
+    var dt = new Date();
+    var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth())).slice(-2))  +'-%'    
+    db("libman_patronlog")
+        .select(           
+            'libman_patronlog.pid as IDnum',
+            'libman_patron.name as name',
+            'libman_patron.Degree_Course as Degree_Course',
+            'libman_patronlog.campus as campus',
+            'libman_patronlog.section as section',
+            'libman_patronlog.mode as mode',
+            'libman_patronlog.reg_in as reg_in',
+            'libman_patronlog.modeOut as mode_out',
+            'libman_patronlog.reg_out as reg_out'
+        )
+        .leftJoin('libman_patron', 'libman_patronlog.pid', '=', 'libman_patron.IDnum')
+        .where("reg_in", "like", datemonth2)
+        .orderByRaw('reg_in DESC')
+        //.andWhere("campus", "Pili")        
+        .then(function(res) {
+            result(null, res);
+        })
+        .catch(function(err) {
+            result(err, null);
+        });
+}
+
 
 model.getPatronLC = function(result){
     var dt = new Date();

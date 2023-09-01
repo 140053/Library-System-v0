@@ -1,0 +1,108 @@
+<style>
+   #body{
+      background-color: #aeb2b6;
+   }
+   .card{
+      background-color: #f9f9f9;
+   }
+</style>
+<audio id="myAudio0">   
+   <source src="/audio/welcome.mp3" type="audio/mpeg">
+   Your browser does not support the audio element.
+ </audio>
+ <audio id="myAudio2">   
+   <source src="/audio/failed.mp3" type="audio/mpeg">
+   Your browser does not support the audio element.
+ </audio>
+ 
+
+<div class="container-fluid">
+   <div class="mt-5">      
+      <div class="card">
+         <div class="card-header text-center">
+            <button class="btn btn-primary d-none" id="playButton" type="button">Play Audio</button>
+            <button class="btn btn-primary d-none" id="playButton2" type="button">Play Audio</button>
+            <h2 class="display-4 fw-bold">Attendance Monitoring System</h2>
+            <p class="display-5 fw-bold h3"><b  id="chold"></b>&nbsp;<b>Campus</b> / <span id="floor"></span> </p>           
+         </div>
+         <div class="card-body">
+            
+
+            <div class="container">
+               <div class="row d-flex justify-content-center">
+                  <div class="col-md-12 text-center d-none">
+                     <h5 > Date: <span id="dholder"></span></h5>
+                  </div>
+               </div>
+               <form method="POST" id="attForm">
+                  <div class="row d-flex ">  
+                     <div class="col-xl-12 col-lg-12 col-ms-12 mb-3">
+                        <div id="sts" class="alert alert-success d-none" role="alert">
+                        Login Successfully!!
+                        </div>
+                    </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                           <input name="idnum" id="idnum" class="form-control form-control-lg" type="text" placeholder="Student Number"   >
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                           <input type="date" name="date" class="form-control form-control-lg" id="">
+                        </div>
+                        <input id="lib" type="hidden" name="library" >
+                        <input id="sec" type="hidden" name="Section" >
+                  
+                   
+                  
+                     
+                  </div>
+               </form>
+              
+               <div class="row row d-flex justify-content-center mt-3 ">
+                  <div class="col-md-6 text-center ">
+                     <img src="/img/nopix.png" class="img-fluid img-thumbnail" alt="Responsive image"
+                        style="height: 509px;">
+                  </div>                 
+               </div>
+              
+               <hr>
+               <div class="row d-flex justify-content-center">
+                  <div class="col-xl-12 col-lg-12 col-md-12 text-center">
+                     <table class="table  table-bordered">
+                        <thead>
+                           <tr class="table-success">
+                              <th class="h3" scope="col">Name</th>
+                              <th class="h3" scope="col">ID Number</th>
+                              <th class="h3" scope="col">Group</th>
+                              <th class="h3" scope="col">Description</th>
+                              <th class="h3" scope="col" >Mode</th>
+                              <th class="h3 d-none" scope="col">Date/Time-in</th>
+                              <th class="h3" scope="col">Location</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <th class="h3" id="name" scope="row">-</th>
+                              <td class="h3" id="IDnum">-</td>
+                              <td class="h3" id="User_Class">-</td>
+                              <td class="h3" id="Degree_Course">-</td>
+                              <td class="h3" id="mode">-</td>
+                              <td class="h3 d-none" id="reg_date" >-</td>
+                              <td class="h3" id="Section">-</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+
+            </div>
+
+         </div>
+         <div class="card-footer">
+            <div class="custom-control custom-switch float-left">
+               <input type="checkbox" class="custom-control-input" id="customSwitch1">
+               <label id="slabel" class="custom-control-label" for="customSwitch1">Light</label>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

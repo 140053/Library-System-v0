@@ -8,6 +8,11 @@ route.get('/', dapp.login);
 route.post('/', dapp.login);
 
 
+//mod login
+route.get("/mod", dapp.loginMod);
+route.post("/mod", dapp.loginMod);
+
+
 //login page
 route.get('/setup', dapp.setup);
 
