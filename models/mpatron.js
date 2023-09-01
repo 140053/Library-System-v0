@@ -56,6 +56,29 @@ model.ingestPatron = function(data, result){
 
 //patronlog insert
 model.ingestPatronlog = function(data, result) {
+    if (!data.idnum || !data.library || !data.Section || !data.mode) {
+        result("Missing required data fields", null);
+        return;
+    }
+
+    var ndate = data.date + ' 00:00:00'; // Corrected date format
+    db("libman_patronlog")
+        .insert({
+            pid: data.idnum,
+            campus: data.library,
+            section: data.Section,
+            mode: data.mode
+            
+        })
+        .then(function(res) {
+            result(null, true);
+        })
+        .catch(function(err) {
+            result(err, null);
+        });
+};
+
+model.ingestPatronlogMod = function(data, result) {
     if (!data.date || !data.idnum || !data.library || !data.Section || !data.mode) {
         result("Missing required data fields", null);
         return;
@@ -110,6 +133,7 @@ model.checkLastMode = function(data, result){
     db("libman_patronlog")
     .where({pid: data.idnum})
     .orderBy('id', 'desc')
+    .limit(1)
     //.whereNull("reg_out")    
     .then(function(res){
         result(null, res);

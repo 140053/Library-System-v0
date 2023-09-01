@@ -18,10 +18,11 @@ controller.login = function (req, res) {
     var object2 = { mode: 'in' };
 
 
-    console.log(object1)
+    console.log(Object.keys(object1).length)
 
     if (Object.keys(object1).length == 3) {
         pmodel.getPatronByID(req.body, function (err, res0) {
+            //console.log(res0)
             //console.log(res0)
             var status
             if (res0 == null) {
@@ -38,11 +39,14 @@ controller.login = function (req, res) {
                     if (process.env.lsys_mode == 'true') {
                         // IN here
                         rdata = { ...object1, ...object2 };
-                        //console.log(rdata)
-                        //console.log(res0)
+                        console.log(rdata)
+                        //console.log(object2)
                         pmodel.ingestPatronlog(rdata, function (err, result) {
                             if (result) {
                                 res.send({ status: status, data: res0, rdata: rdata });
+                            }else{
+                                status = false;
+                                res.send({ status: status });
                             }
                         })
                     } else {
