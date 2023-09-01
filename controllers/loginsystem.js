@@ -132,7 +132,7 @@ controller.loginMod = function (req, res) {
                         rdata = { ...object1, ...object2 };
                         //console.log(rdata)
                         //console.log(res0)
-                        pmodel.ingestPatronlog(rdata, function (err, result) {
+                        pmodel.ingestPatronlogMod(rdata, function (err, result) {
                             if (result) {
                                 res.send({ status: status, data: res0, rdata: rdata });
                             }
@@ -152,7 +152,7 @@ controller.loginMod = function (req, res) {
                                 rdata = { ...object1, ...object2 };
                                 //console.log(rdata)
                                 //console.log(res0)
-                                pmodel.ingestPatronlog(rdata, function (err, result) {
+                                pmodel.ingestPatronlogMod(rdata, function (err, result) {
                                     if (result) {
                                         res.send({ status: status, data: res0, rdata: rdata });
                                     }
@@ -163,7 +163,7 @@ controller.loginMod = function (req, res) {
                             rdata = { ...object1, ...object2 };
                             //console.log(rdata)
                             //console.log(res0)
-                            pmodel.ingestPatronlog(rdata, function (err, result) {
+                            pmodel.ingestPatronlogMod(rdata, function (err, result) {
                                 if (result) {
                                     res.send({ status: status, data: res0, rdata: rdata });
                                 }
