@@ -6,11 +6,22 @@
       background-color: #f9f9f9;
    }
 </style>
+<audio id="myAudio">   
+   <source src="/audio/success.mp3" type="audio/mpeg">
+   Your browser does not support the audio element.
+ </audio>
+ <audio id="myAudio2">   
+   <source src="/audio/failed.mp3" type="audio/mpeg">
+   Your browser does not support the audio element.
+ </audio>
+ 
 
 <div class="container-fluid">
    <div class="mt-5">      
       <div class="card">
          <div class="card-header text-center">
+            <button class="btn btn-primary d-none" id="playButton" type="button">Play Audio</button>
+            <button class="btn btn-primary d-none" id="playButton2" type="button">Play Audio</button>
             <h2 class="display-4 fw-bold">Attendance Monitoring System</h2>
             <p class="display-5 fw-bold h3"><b  id="chold"></b>&nbsp;<b>Campus</b> / <span id="floor"></span> </p>           
          </div>

@@ -90,6 +90,7 @@ $(document).ready(function () {
                     $('#mode').empty().text(response.rdata.mode.toUpperCase())
                     $('#reg_date').empty().text(getFormattedDate())
                     $('#Section').empty().text(getCookie('Section'));
+                    $("#playButton").trigger("click");
 
                 }
                 if(response.status == false){
@@ -101,6 +102,7 @@ $(document).ready(function () {
                     $('#Degree_Course').empty().text("-")
                     $('#reg_date').empty().text("-")
                     $('#Section').empty().text("-");
+                    $("#playButton2").trigger("click");
                 }
                 
             },
@@ -111,6 +113,23 @@ $(document).ready(function () {
         });
 
     })
+
+    var x = $("#myAudio")[0]; // Get the DOM element for the audio
+
+    $("#playButton").click(function() {
+      x.play();
+    });
+  
+    $("#pauseButton").click(function() {
+      x.pause();
+    });
+
+
+    var x2 = $("#myAudio2")[0]; // Get the DOM element for the audio
+
+    $("#playButton2").click(function() {
+      x2.play();
+    });
 
 
 
