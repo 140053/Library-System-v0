@@ -311,7 +311,8 @@ model.getPatronLC = function(result){
     var dt = new Date();
     var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +'%'
     db("libman_patronlog")
-        .select(           
+        .select(  
+            'libman_patron.IDnum as IDnum',         
             'libman_patron.name as name',
             'libman_patron.Degree_Course as Degree_Course',
             'libman_patronlog.campus as campus',
