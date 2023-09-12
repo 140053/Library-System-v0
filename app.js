@@ -54,7 +54,7 @@ app.set("view engine", "ejs");
 app.use('/', require("./routes/droute"));
 
 //cataloging1
-app.use('/catalog', require("./routes/rcataloging"));
+//app.use('/catalog', require("./routes/rcataloging"));
 //login system
 app.use('/lsystem', require("./routes/lsystem"));
 //patron 
