@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Patron Today Log</h1>
+          <h1 class="m-0"><%= title %></h1>
         </div>
         
       </div>
@@ -23,9 +23,11 @@
                       <thead>
                         <tr>                         
                           <th>IDnum</th>
+
                           <th>Name</th>
                           <th>Course</th>
                           <th>Gender</th>                          
+
                           <th>Section</th>
                           <th>Mode</th>
                           <th>Reg In</th>
@@ -48,6 +50,8 @@
                               <td>
                                 <%= data[index].gender %>
                               </td>
+                              <td><%= data[index].Degree_Course %></td>
+                              <td><%= data[index].gender %></td>
                               <td>
                                 <%= data[index].section %>
                               </td>

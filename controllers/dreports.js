@@ -115,7 +115,7 @@ controller.patronMonth = function(req, res ){
    db.getPatronMonth(function(err, result){
    //console.log(result)
         res.render("pages/reports/patron-today",{
-            title: "Patron Reports Today",
+            title: "This Month Patron Reports",
             sui: "", //creds,
             auth: "",
             data: result
@@ -130,7 +130,7 @@ controller.patronLMonth = function(req, res ){
    db.getPatronLMonth(function(err, result){
    //console.log(result)
         res.render("pages/reports/patron-today",{
-            title: "Patron Reports Today",
+            title: "Last Month Reports",
             sui: "", //creds,
             auth: "",
             data: result
@@ -145,7 +145,7 @@ controller.patronByFloor = function(req, res ){
    db.getPatronLC(function(err, result){
    //console.log(result)
         res.render("pages/reports/patron-today",{
-            title: "Patron Reports Today",
+            title: "Patron Reports for Learning Commons",
             sui: "", //creds,
             auth: "",
             data: result
