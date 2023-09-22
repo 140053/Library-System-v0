@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "nodemon app.js",
     "dev": "nodemon app.js",
     "cluster": "nodemon capp.js",
@@ -51,5 +52,7 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
+  }, "nodemonConfig": {
+    "ignore": ["/public/js/*"]
   }
 }

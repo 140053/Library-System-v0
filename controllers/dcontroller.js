@@ -13,7 +13,7 @@ var controller = function (task) {
 controller.index = function (req, res) {
   var creds = req.session.creds
  
-  res.render("pages/index", {
+  res.render("pages/main", {
     title: "Home",
     sui: creds,
     auth: "",

@@ -33,6 +33,8 @@ var model = function (task) {
 
 
 
+
+
 //POST model for form insert patron 
 
 model.ingestPatron = function(data, result){
@@ -230,6 +232,7 @@ model.getPatronToday = function(result){
         .select(           
             'libman_patron.IDnum as IDnum',
             'libman_patron.name as name',
+            'libman_patron.gender as gender',
             'libman_patron.Degree_Course as Degree_Course',
             'libman_patronlog.campus as campus',
             'libman_patronlog.section as section',
@@ -260,6 +263,7 @@ model.getPatronMonth = function(result){
         .select(           
             'libman_patronlog.pid as IDnum',
             'libman_patron.name as name',
+            'libman_patron.gender as gender',
             'libman_patron.Degree_Course as Degree_Course',
             'libman_patronlog.campus as campus',
             'libman_patronlog.section as section',
@@ -288,6 +292,7 @@ model.getPatronLMonth = function(result){
         .select(           
             'libman_patronlog.pid as IDnum',
             'libman_patron.name as name',
+            'libman_patron.gender as gender',
             'libman_patron.Degree_Course as Degree_Course',
             'libman_patronlog.campus as campus',
             'libman_patronlog.section as section',
@@ -317,6 +322,7 @@ model.getPatronLC = function(result){
         .select(  
             'libman_patron.IDnum as IDnum',         
             'libman_patron.name as name',
+            'libman_patron.gender as gender',
             'libman_patron.Degree_Course as Degree_Course',
             'libman_patronlog.campus as campus',
             'libman_patronlog.section as section',
@@ -337,6 +343,208 @@ model.getPatronLC = function(result){
             result(err, null);
         });
 }
+
+//get count by course 
+
+model.getreportByCourse = function(result){
+    var dt = new Date();
+    var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +'%'
+    var datemonth3 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +"-"+ (("0"+dt.getDate()).slice(-2)) + '%'
+    db("libman_patronlog")
+    .select(
+        'libman_patron.Degree_Course'        
+    )
+    .count('*', {as: 'cnt'})
+    .leftJoin('libman_patron', 'libman_patronlog.pid', '=', 'libman_patron.IDnum')
+    .where("reg_in", "like", datemonth3)
+    .groupBy('Degree_Course')
+    .then(function(res) {
+        result(null, res);
+    })
+    .catch(function(err) {
+        result(err, null);
+    });
+
+}
+
+//get count by Section 
+
+
+model.getreportBySection = function(section , result){
+    var sect = section;
+    var sqlSec = "";
+    if( sect == "gencir"){
+        sqlSec = "Ground%";
+    }
+    if( sect == "lern"){
+        sqlSec = "Second%";
+    }
+    var dt = new Date();
+    var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +'%'
+    var datemonth3 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +"-"+ (("0"+dt.getDate()).slice(-2)) + '%'
+    //console.log(datemonth3);
+
+    var sql = "SELECT Degree_Course , count(*) as cnt FROM libman_patron as p JOIN libman_patronlog as pl on p.IDnum = pl.pid where pl.section like '"+ sqlSec +"' and pl.reg_in like '"+ datemonth3 +"'  group by Degree_Course ;"
+    
+    db.raw(sql)
+    .then(function(res) {
+        //console.log(res[0])
+        result(null, res);
+        //console.log(sqlSec + ' ' + sql + ' ' + JSON.stringify(res[0]))
+    })
+    .catch(function(err) {
+        result(err, null);
+    });
+
+}
+
+
+model.getreportByGender = function(section , result){
+    var sect = section;
+    var sqlSec = "";
+    if( sect == "gencir"){
+        sqlSec = "Ground%";
+    }
+    if( sect == "lern"){
+        sqlSec = "Second%";
+    }
+    var dt = new Date();
+    var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +'%'
+    var datemonth3 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +"-"+ (("0"+dt.getDate()).slice(-2)) + '%'
+    //console.log(datemonth3);
+
+    var sql = "SELECT gender , count(*) as cnt FROM libman_patron as p JOIN libman_patronlog as pl on p.IDnum = pl.pid where  pl.reg_in like '"+ datemonth3 +"'  group by gender ;"
+    
+    db.raw(sql)
+    .then(function(res) {
+        //console.log(res[0])
+        result(null, res);
+        //console.log(sqlSec + ' ' + sql + ' ' + JSON.stringify(res[0]))
+    })
+    .catch(function(err) {
+        result(err, null);
+    });
+
+}
+
+model.getreportByUserClass = function( result){
+    
+   
+    var dt = new Date();
+    var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +'%'
+    var datemonth3 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +"-"+ (("0"+dt.getDate()).slice(-2)) + '%'
+    //console.log(datemonth3);
+
+    var sql = "SELECT User_Class as uclass , count(*) as cnt FROM libman_patron as p JOIN libman_patronlog as pl on p.IDnum = pl.pid WHERE pl.reg_in like '"+ datemonth3 +"' group by User_Class ;";
+    
+    db.raw(sql)
+    .then(function(res) {
+        //console.log(res[0])
+        result(null, res);
+        //console.log(sqlSec + ' ' + sql + ' ' + JSON.stringify(res[0]))
+    })
+    .catch(function(err) {
+        result(err, null);
+    });
+
+}
+
+
+model.getGenderByCourseMale = function(result){
+    var dt = new Date();
+    var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +'%'
+    var datemonth3 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +"-"+ (("0"+dt.getDate()).slice(-2)) + '%'
+    //console.log(datemonth3);
+
+    db.raw("SELECT Degree_Course as male , count(*) as cnt FROM libman_patron as p JOIN libman_patronlog as pl on p.IDnum = pl.pid Where gender = 'Male' and reg_in like '"+ datemonth3+"'    group by Degree_Course ;")
+    .then(function(res) {
+        //console.log(res[0])
+        result(null, res);
+        //console.log(sqlSec + ' ' + sql + ' ' + JSON.stringify(res[0]))
+    })
+    .catch(function(err) {
+        result(err, null);
+    });
+
+
+    
+}
+
+model.getGenderByCourseFemale = function(result){
+    var dt = new Date();
+    var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +'%'
+    var datemonth3 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +"-"+ (("0"+dt.getDate()).slice(-2)) + '%'
+    //console.log(datemonth3);
+
+    db.raw("SELECT Degree_Course as female , count(*) as cnt FROM libman_patron as p JOIN libman_patronlog as pl on p.IDnum = pl.pid Where gender = 'Female' and reg_in like '"+ datemonth3+"'   group by Degree_Course ;")
+    .then(function(res) {
+        //console.log(res[0])
+        result(null, res);
+        //console.log(sqlSec + ' ' + sql + ' ' + JSON.stringify(res[0]))
+    })
+    .catch(function(err) {
+        result(err, null);
+    });
+
+}
+
+model.getGenderByCourseAll = function(result){
+    var dt = new Date();
+    var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +'%'
+    var datemonth3 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +"-"+ (("0"+dt.getDate()).slice(-2)) + '%'
+    db.raw("SELECT  Degree_Course, COUNT(CASE WHEN gender = 'Male' THEN 1 END) AS male_cnt, COUNT(CASE WHEN gender = 'Female' THEN 1 END) AS female_cnt  FROM libmanV0.libman_patron as p JOIN libmanV0.libman_patronlog as pl on p.IDnum = pl.pid where  pl.reg_in like '"+datemonth3+"' group by Degree_Course ;")
+    .then(function(res) {
+        //console.log(res[0])
+        result(null, res);
+        //console.log(sqlSec + ' ' + sql + ' ' + JSON.stringify(res[0]))
+    })
+    .catch(function(err) {
+        result(err, null);
+    });
+
+    //db.raw("SELECT  Degree_Course, COUNT(CASE WHEN gender = 'Male' THEN 1 END) AS male_cnt, COUNT(CASE WHEN gender = 'Female' THEN 1 END) AS female_cnt  FROM libmanV0.libman_patron as p JOIN libmanV0.libman_patronlog as pl on p.IDnum = pl.pid where pl.section like 'Sec%' and pl.reg_in like '"+datemonth3+"' group by Degree_Course ;")
+    
+}
+
+
+model.getGenderByCourseSect = function( section,  result){
+
+    var sect  = section;
+    var sectVar = '';
+
+    if(sect == 'lern'){
+        sectVar = 'section like "Second%"'
+    }
+
+    if(sect == 'cir'){
+        sectVar = 'section like "Ground%"'
+    }
+    var dt = new Date();
+    var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +'%'
+    var datemonth3 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +"-"+ (("0"+dt.getDate()).slice(-2)) + '%'
+
+    var sql = "SELECT  Degree_Course, COUNT(CASE WHEN gender = 'Male' THEN 1 END) AS male_cnt, COUNT(CASE WHEN gender = 'Female' THEN 1 END) AS female_cnt  FROM libmanV0.libman_patron as p JOIN libmanV0.libman_patronlog as pl on p.IDnum = pl.pid where "+sectVar+" and pl.reg_in like '"+datemonth3+"'  group by Degree_Course ;"
+    //console.log(sql)
+    db.raw(sql)    
+    .then(function(res) {
+        //console.log(res[0])
+        result(null, res);
+        //console.log(sqlSec + ' ' + sql + ' ' + JSON.stringify(res[0]))
+    })
+    .catch(function(err) {
+        result(err, null);
+    });
+
+    //db.raw("SELECT  Degree_Course, COUNT(CASE WHEN gender = 'Male' THEN 1 END) AS male_cnt, COUNT(CASE WHEN gender = 'Female' THEN 1 END) AS female_cnt  FROM libmanV0.libman_patron as p JOIN libmanV0.libman_patronlog as pl on p.IDnum = pl.pid where pl.section like 'Sec%' and pl.reg_in like '"+datemonth3+"' group by Degree_Course ;")
+    
+}
+
+
+
+
+
+
+
 
 
 
