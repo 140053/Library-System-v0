@@ -343,10 +343,11 @@ model.getPatronLC = function(result){
 
 //get count by course 
 
-model.getreportByCourse = function(result){
+model.getreportByCourse = function( result){
     var dt = new Date();
     var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +'%'
     var datemonth3 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +"-"+ (("0"+dt.getDate()).slice(-2)) + '%'
+
     db("libman_patronlog")
     .select(
         'libman_patron.Degree_Course'        
