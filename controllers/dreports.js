@@ -113,12 +113,12 @@ controller.patronMonth = function(req, res ){
     //var creds = req.session.creds
    // if(!creds){ res.redirect("/")}
    db.getPatronMonth(function(err, result){
-   //console.log(result)
+   console.log(result[0])
         res.render("pages/reports/patron-today",{
             title: "Patron Reports Today",
             sui: "", //creds,
             auth: "",
-            data: result
+            data: result[0]
         })
    })
     
