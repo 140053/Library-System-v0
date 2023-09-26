@@ -228,6 +228,10 @@ model.importCSV = async function (fname, result) {
 model.getPatronToday = function(result){
     var dt = new Date();
     var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +"-"+ (("0"+dt.getDate()).slice(-2)) + '%'
+
+    db.raw("SELECT libman_patronlog.pid AS IDnum,libman_patron.name AS name, libman_patron.gender AS gender,libman_patron.Degree_Course AS Degree_Course,libman_patronlog.campus AS campus, libman_patronlog.section AS section,libman_patronlog.mode AS mode, libman_patronlog.reg_in AS reg_in, libman_patronlog.modeOut AS mode_out,libman_patronlog.reg_out AS reg_out FROM libman_patronlog      LEFT JOIN libman_patron ON libman_patronlog.pid = libman_patron.IDnum      WHERE reg_in LIKE '"+datemonth2+"'      ORDER BY reg_in DESC")
+   
+    /*
     db("libman_patronlog")
         .select(           
             'libman_patron.IDnum as IDnum',
@@ -245,7 +249,8 @@ model.getPatronToday = function(result){
         .where("reg_in", "like", datemonth2)
         .orderBy('reg_in', 'desc')
         //.orderByRaw('reg_in DESC')
-        //.andWhere("campus", "Pili")        
+        //.andWhere("campus", "Pili")
+        */        
         .then(function(res) {
             result(null, res);
         })
