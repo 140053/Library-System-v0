@@ -104,7 +104,7 @@ controller.patronToday = function(req, res ){
             title: "Patron Reports Today",
             sui: "", //creds,
             auth: "",
-            data: result
+            data: result[0]
         })
    })
     
