@@ -1,5 +1,9 @@
 /* global Chart:false */
 
+
+
+
+
 $(function () {
    'use strict'
 
@@ -14,7 +18,8 @@ $(function () {
 
    //kurso all
    $.post("/api/bycourse",{
-      "type": "d"
+      "type": "d",
+      "section": ""
    }, function (data) {
       //console.log(data[0])
       var kurso = data[0];
@@ -109,7 +114,7 @@ $(function () {
    
    $.post("/api/bySection", {
       type: "",
-      section: ""
+      section: "lern"
    }, function (data) {
       //console.log(data)
 
@@ -201,7 +206,7 @@ $(function () {
 
    // General Circulation
    $.post("/api/bySection", {
-      section: "",
+      section: "gencir",
       type: ""
    }, function (data) {
       //console.log(data)
@@ -440,7 +445,7 @@ $(function () {
 
 
    $.post("/api/genderbySection",{
-      section: ''
+      section: 'cir'
    },  function(data){
       //console.log(data[0])
 
@@ -503,7 +508,7 @@ $(function () {
    })
 
    $.post("/api/genderbySection",{
-      section: ''
+      section: 'lern'
    },  function(data){
      // console.log(data[0])
 
