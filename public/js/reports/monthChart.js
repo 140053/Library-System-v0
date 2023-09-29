@@ -109,7 +109,7 @@ $(function () {
    // General Circulation
    $.post("/api/bySection", {
       type: "m",
-      section: "lern"
+      section: ""
    }, function (data) {
       //console.log(data)
 
@@ -202,7 +202,7 @@ $(function () {
    //Learning commons
    $.post("/api/bySection", {
       type: "m",
-      section: "gencir"
+      section: ""
    }, function (data) {
       //console.log(data)
 
@@ -295,7 +295,7 @@ $(function () {
    //Gender all 
 
    $.post("/api/byGenderAll", {
-      section: "lern",
+      section: "",
       type: "m"
    }, function (data) {
       //console.log(data[0])
@@ -331,7 +331,7 @@ $(function () {
    //User Class
 
    $.post("/api/byUsertype", {
-      section: "lern"
+      section: ""
    }, function (data) {
       //console.log(data[0])
 
@@ -440,7 +440,7 @@ $(function () {
 
 
    $.post("/api/genderbySection",{
-      section: 'cir'
+      section: ''
    },  function(data){
       //console.log(data[0])
 
@@ -503,7 +503,7 @@ $(function () {
    })
 
    $.post("/api/genderbySection",{
-      section: 'lern'
+      section: ''
    },  function(data){
      // console.log(data[0])
 
