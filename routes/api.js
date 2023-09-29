@@ -15,6 +15,9 @@ route.post('/getLogby', patron.patronToday_api)
 route.post('/bycourse', patron.apiGetCourseReport);
 
 
+
+
+
 route.post('/bySection', patron.apiGetCourseReportSec );
 
 route.post("/byGenderAll", patron.apiGetGenderAll);

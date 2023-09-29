@@ -14,7 +14,7 @@ $(function () {
 
    //kurso all
    $.post("/api/bycourse",{
-      "type": "d"
+      "type": "m"
    }, function (data) {
       //console.log(data[0])
       var kurso = data[0];
@@ -105,10 +105,10 @@ $(function () {
 
    })
 
-   //Learning commons
-   
+
+   // General Circulation
    $.post("/api/bySection", {
-      type: "",
+      type: "m",
       section: "lern"
    }, function (data) {
       //console.log(data)
@@ -199,10 +199,10 @@ $(function () {
 
    })
 
-   // General Circulation
+   //Learning commons
    $.post("/api/bySection", {
-      section: "gencir",
-      type: ""
+      type: "m",
+      section: "gencir"
    }, function (data) {
       //console.log(data)
 
@@ -295,8 +295,8 @@ $(function () {
    //Gender all 
 
    $.post("/api/byGenderAll", {
-      type: "m",
-      section: "lern"
+      section: "lern",
+      type: "m"
    }, function (data) {
       //console.log(data[0])
 

@@ -15,7 +15,9 @@ var controller = function (task) {
 //Repport
 
 controller.apiGetCourseReport = function(req, res){
-    db.getreportByCourse(function(err, result){
+   
+    var type = req.body.type;
+    db.getreportByCourse(type, function(err, result){
 
         const course = result.filter(item => item.Degree_Course).map(item => item.Degree_Course); 
         
@@ -31,7 +33,9 @@ controller.apiGetCourseReport = function(req, res){
 
 controller.apiGetCourseReportSec = function(req, res){
     var section = req.body.section;
-    db.getreportBySection(section, function(err, result){
+    var type = req.body.type;
+    //console.log(req.body)
+    db.getreportBySection( type, section, function(err, result){
         //console.log(result[0]);
        
         const course = result[0].map(item => item.Degree_Course);
@@ -47,7 +51,8 @@ controller.apiGetCourseReportSec = function(req, res){
 
 controller.apiGetGenderAll = function(req, res){
     var section = req.body.section;
-    db.getreportByGender(section, function(err, result){
+    var type = req.body.type
+    db.getreportByGender(type, section, function(err, result){
         //console.log(result[0])
         res.send(result);
     })
@@ -113,9 +118,9 @@ controller.patronMonth = function(req, res ){
     //var creds = req.session.creds
    // if(!creds){ res.redirect("/")}
    db.getPatronMonth(function(err, result){
-   console.log(result[0])
-        res.render("pages/reports/patron-today",{
-            title: "Patron Reports Today",
+   //console.log(result[0])
+        res.render("pages/reports/month",{
+            title: "This Month Patron Reports",
             sui: "", //creds,
             auth: "",
             data: result[0]

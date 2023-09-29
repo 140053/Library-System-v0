@@ -1,0 +1,91 @@
+<div class="content-wrapper" style="min-height: 274px">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Patron Today Log</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-10 col-sm-10">
+            <div class="align-content-center">
+              <div class="card">
+                <div class="card-body">
+                  <% var datalen=Object.keys(data).length %>
+                    <div class="table-responsive">
+                      <table id="patronlog" class="table">
+                        <thead>
+                          <tr>                         
+                            <th>IDnum</th>
+                            <th>Name</th>
+                            <th>Course</th>
+                            <th>Gender</th>                          
+                            <th>Section</th>
+                            <th>Mode</th>
+                            <th>Reg In</th>
+                            <th>Reg Out</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% if (datalen !=0) { %>
+                            <% for( var index=0; index <datalen; index++ ) { %>
+                              <tr class="odd">                              
+                                <td>
+                                  <%= data[index].IDnum %>
+                                </td>
+                                <td>
+                                  <%= data[index].name %> 
+                                </td>
+                                <td>
+                                  <%= data[index].Degree_Course %>
+                                </td>
+                                <td>
+                                  <%= data[index].gender %>
+                                </td>
+                                <td>
+                                  <%= data[index].section %>
+                                </td>
+                                <td>
+                                  <%= data[index].mode %>
+                                </td>
+                                <td>
+                                  <script type="text/javascript">
+                                    document.write(
+                                      new Date(
+                                        "<%= data[index].reg_in.toISOString() %>"
+                                      ).toLocaleDateString()
+                                    );
+                                  </script>
+                                </td>
+                                <td>
+                                  <% if(data[index].reg_out !=null){%>
+                                    <script type="text/javascript">
+                                      document.write(
+                                        new Date(
+                                          "<%= data[index].reg_out.toISOString() %>"
+                                        ).toLocaleDateString()
+                                      );
+                                    </script>
+                                    <% } %>
+                                </td>
+                              </tr>
+                              <% } %>
+                            <% } %>
+  
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <script src="/js/reports/patronlog.js"></script>
