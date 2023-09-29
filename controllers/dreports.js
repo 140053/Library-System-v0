@@ -129,6 +129,21 @@ controller.patronMonth = function(req, res ){
     
 }
 
+controller.patronMonthlist = function(req, res ){
+    //var creds = req.session.creds
+   // if(!creds){ res.redirect("/")}
+   db.getPatronMonth(function(err, result){
+   //console.log(result[0])
+        res.render("pages/reports/patron-today",{
+            title: "This Month Patron Reports",
+            sui: "", //creds,
+            auth: "",
+            data: result[0]
+        })
+   })
+    
+}
+
 controller.patronLMonth = function(req, res ){
     //var creds = req.session.creds
    // if(!creds){ res.redirect("/")}
