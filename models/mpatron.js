@@ -294,7 +294,7 @@ model.getPatronMonth = function(result){
 model.getPatronLMonth = function(result){
     var dt = new Date();
     var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth())).slice(-2))  +'-%' 
-    /   
+       
     db("libman_patronlog")
         .select(           
             'libman_patronlog.pid as IDnum',
@@ -394,6 +394,10 @@ model.getreportBySection = function(type, section , result){
         sqlSec = "Second%";
     }
 
+    if(sect == ""){
+        sqlSec = "Main"
+    }
+
    
 
     var dt = new Date();
@@ -430,6 +434,10 @@ model.getreportByGender = function(type, section , result){
     }
     if( sect == "lern"){
         sqlSec = "Second%";
+
+    }
+    if(sect == ""){
+        sqlSec = "Main"
     }
     var dt = new Date();
     var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +'%'
@@ -546,6 +554,10 @@ model.getGenderByCourseSect = function( section,  result){
 
     if(sect == 'cir'){
         sectVar = 'section like "Ground%"'
+    }
+
+    if(sect == ""){
+        sqlSec = "section like 'Main'"
     }
     var dt = new Date();
     var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth()+1)).slice(-2))  +'%'

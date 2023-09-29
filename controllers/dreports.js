@@ -135,7 +135,7 @@ controller.patronLMonth = function(req, res ){
    db.getPatronLMonth(function(err, result){
    //console.log(result)
         res.render("pages/reports/patron-today",{
-            title: "Patron Reports Today",
+            title: "Patron Reports Last Month",
             sui: "", //creds,
             auth: "",
             data: result
