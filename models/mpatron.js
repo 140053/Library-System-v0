@@ -293,7 +293,9 @@ model.getPatronMonth = function(result){
 
 model.getPatronLMonth = function(result){
     var dt = new Date();
-    var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth())).slice(-2))  +'-%' 
+    //var datemonth2 = (dt.getFullYear()) +"-"+  (("0"+(dt.getMonth())).slice(-2))  +'-%' 
+    var datemonth2 = "2023-12-%" 
+    
        
     db("libman_patronlog")
         .select(           
