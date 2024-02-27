@@ -1,107 +1,113 @@
-<% var datalen = Object.keys(data).length; %>
-
-<div class="content-wrapper" style="min-height: 274px;">
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Lending Module</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Lending Module</li>
-                    </ol>
+<% var datalen=Object.keys(data).length; %>
+    <div class="content-wrapper" style="min-height: 274px;">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Lending Module</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Lending Module</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <section class="content">
-        <div class="container-fluid">
-            
-           
-            <div>
-                <style>
-                    body {
-                        background-color: #444444;
-                    }
+        <section class="content">
+            <div class="container-fluid">
+                <div>
+                    <style>
+                        body {
+                            background-color: #444444;
+                        }
 
-                    .wrappe {
-                        display: grid;
-                        grid-template-columns: repeat(6, 1fr);
-                        gap: 10px;
-                    }
-                </style>
-                <div class="container-fluid">
-                    <div class="mt-3">
-                        <div class="card">
-                            <div class="card-header">
-                                Lender V2.0
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title"></h5>
+                        .wrappe {
+                            display: grid;
+                            grid-template-columns: repeat(6, 1fr);
+                            gap: 10px;
+                        }
+                    </style>
+                    <div class="container-fluid">
+                        <div class="mt-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    Lender V2.0
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"></h5>
 
-                                <div class="card text-center flex-fill">
-                                    <div class="card-body">
-                                        <div>
+                                    <div class="card text-center flex-fill">
+                                        <div class="card-body">
+                                            <div>
 
-                                            <form method="post" action="/lending/lend">
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1">ID
-                                                            Number</span>
+                                                <form method="post" action="/lending/lend">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">ID Number</span>
+                                                        </div>
+                                                        <input name="type" type="hidden" id="typeid">
+                                                        <input id="idin" name="id" type="text" class="form-control"
+                                                            placeholder="" aria-describedby="basic-addon1" autofocus="">
                                                     </div>
-                                                    <input name="type" type="hidden" id="typeid">
-                                                    <input id="idin"  name="id" type="text"  class="form-control" placeholder=""  aria-describedby="basic-addon1" autofocus="">
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <hr>
+                                                </form>
+                                            </div>
+                                            <hr>
 
-                                        <div class="wrappe ">
-                                            <% if (Object.keys(lender).length != 0) {%>
-                                                <% for (var i = 0; i < Object.keys(lender).length; i++) { %>
-                                                    <div class="card" >
-                                                            <% if (lender[i].tname === 'scrabble') {%>
-                                                                <img class="card-img-top" src="/img/SC.png" alt="Card image cap" >
-                                                            <% } %>
-                    
-                                                            <% if (lender[i].tname === 'gog') {%>
-                                                                <img class="card-img-top" src="/img/GOG.png" alt="Card image cap" >
-                                                            <% } %>
-                
-                                                            <% if (lender[i].tname === 'chess') {%>
-                                                                <img class="card-img-top" src="/img/chess.png" alt="Card image cap" >
-                                                            <% } %>
-                                                            <% if (lender[i].tname === 'snakeandlader') {%>
-                                                                <img class="card-img-top" src="/img/SL.png" alt="Card image cap" >
-                                                            <% } %>
-                
-                                                            <% if (lender[i].tname == '') {%>
-                                                                <img class="card-img-top" src="/img/COM.png" alt="Card image cap" >
+                                            <div class="wrappe ">
+                                                <% if (Object.keys(lender).length !=0) {%>
+                                                    <% for (var i=0; i < Object.keys(lender).length; i++) { %>
+                                                        <div class="card">
+                                                            <% if (lender[i].tname==='scrabble' ) {%>
+                                                                <img class="card-img-top" src="/img/SC.png" alt="Card image cap">
                                                             <% } %>
 
-                                                            <% if (lender[i].tname == 'key') {%>
-                                                                <img class="card-img-top" src="/img/key.jpg" alt="Card image cap" >
+                                                            <% if (lender[i].tname==='gog' ) {%>
+                                                                <img class="card-img-top" src="/img/GOG.png" alt="Card image cap">
                                                             <% } %>
-                
-                
+
+                                                            <% if (lender[i].tname==='chess' ) {%>
+                                                                <img class="card-img-top" src="/img/chess.png" alt="Card image cap">
+                                                            <% } %>
+                                                            <% if (lender[i].tname==='snakeandlader') {%>
+                                                                <img class="card-img-top" src="/img/SL.png" alt="Card image cap">
+                                                            <% } %>
+
+                                                            <% if (lender[i].tname=='' ){%>
+                                                                <img class="card-img-top" src="/img/COM.png" alt="Card image cap">
+                                                            <% } %>
+
+                                                            <% if (lender[i].tname=='key' ) {%>
+                                                                <img class="card-img-top" src="/img/key.jpg" alt="Card image cap">
+                                                            <% } %>
                                                             <div class="card-body">
                                                                 <ul class="list-unstyled">
-                                                                    <li><b><%= //lender[i].sname %></b></li>
-                                                                    <li> Student #: <%= lender[i].idnum %></li>
-                                                                    <li> Course: <%= //lender[i].course %></li>
-                                                                    <li>BG ID: <%= lender[i].tcode.toUpperCase() %> </li>
+                                                                    <li>
+                                                                        <b>
+                                                                            <%= lender[i].sname %>
+                                                                        </b>
+                                                                    </li>
+                                                                    <li>
+                                                                         Student #: <%= lender[i].idnum %>
+                                                                    </li>
+                                                                    <li> 
+                                                                        Course: <%= lender[i].course %>
+                                                                    </li>
+                                                                    <li>
+                                                                        BG ID:  <%= lender[i].tcode.toUpperCase() %>
+                                                                    </li>
                                                                 </ul>
-                                                                <a href="/lending/return/<%= lender[i].tcode %>/<%= lender[i].idnum %>"   class="btn btn-primary btn-block">return</a>
+                                                                <a href="/lending/return/<%= lender[i].tcode %>/<%= lender[i].idnum %>" class="btn btn-primary btn-block">return</a>
                                                             </div>
-                                                    </div>
-                                                    
+
+                                                                                                            
+                                                        </div>
+                                                    <% } %>
                                                 <% } %>
-                                            <% } %>
-                                        </div>
-                
-                
+                                            </div>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -115,100 +121,100 @@
 
 
             </div>
-        </div>
+    </div>
     </section>
 
-</div>
-
-
-
-
-
-
-
-
-
-
-<script src="/js/lendingMaster/lending.js"></script>
-
-
-<% if (datalen == 1){ %>    
-   <script src="/js/lendingMaster/trigger.js"></script>
-<% } else { %>
-    <% if (sts == true) { %>
-        <script src="/js/lendingMaster/trigger1.js"></script>
-    <% } %>
-<% } %>
-
-
-
-  <!-- Modal -->
-  <div class="modal fade " id="lendermodal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Borrow Window</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-           
-          <% if (datalen == 1){ %>
-            <div class="card" >
-              <div class="card-header">
-                  <%= data[0].name %>
-              </div>
-              <div class="mt-3 mb-3">
-                <form method="post" action="/lending/save">
-                  <input name="sname" type="hidden" value="<%= data[0].name %>" >
-                  <input name="idnum" type="hidden" value="<%= data[0].IDnum %>" >                 
-                  <input name="action" type="hidden" value="borrow" >
-                  <input name="type" type="hidden" value="boardgames" >
-                  <input name="tname" id="bgamestype" type="hidden"  >
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon2">Board Games ID</span>
-                    </div>
-                    <input  name="tcode"  id="dgid" type="text" class="form-control binput"  autofocus>
-                  </div>
-                </form>
-              </div>
-
-            </div>
-          <% } %>
-        </div>
-        <div class="modal-footer">
-          <a href="/lending"  type="button" class="btn btn-secondary" >Close</a>
-
-        </div>
-      </div>
     </div>
-  </div>
 
 
-  <div class="modal fade" id="nonlogged" role="dialog"  aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <h2>
-                ERROR: Patron is not Logged in !
-            </h2>
-         
-        </div>
-        <div class="modal-footer">
-          <a href="/lending"  type="button" class="btn btn-secondary" >Close</a>
-
-        </div>
-      </div>
-    </div>
-  </div>
- 
 
 
+
+
+
+
+
+
+    <script src="/js/lendingMaster/lending.js"></script>
+
+
+    <% if (datalen==1){ %>
+        <script src="/js/lendingMaster/trigger.js"></script>
+        <% } else { %>
+            <% if (sts==true) { %>
+                <script src="/js/lendingMaster/trigger1.js"></script>
+                <% } %>
+                    <% } %>
+
+
+
+                        <!-- Modal -->
+                        <div class="modal fade " id="lendermodal" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Borrow Window</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <% if (datalen==1){ %>
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <%= data[0].name %>
+                                                </div>
+                                                <div class="mt-3 mb-3">
+                                                    <form method="post" action="/lending/save">
+                                                        <input name="sname" type="hidden" value="<%= data[0].name %>">
+                                                        <input name="idnum" type="hidden" value="<%= data[0].IDnum %>">
+                                                        <input name="action" type="hidden" value="borrow">
+                                                        <input name="type" type="hidden" value="boardgames">
+                                                        <input name="tname" id="bgamestype" type="hidden">
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon2">Board
+                                                                    Games ID</span>
+                                                            </div>
+                                                            <input name="tcode" id="dgid" type="text"
+                                                                class="form-control binput" autofocus>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                            <% } %>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="/lending" type="button" class="btn btn-secondary">Close</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="modal fade" id="nonlogged" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h2>
+                                            ERROR: Patron is not Logged in !
+                                        </h2>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="/lending" type="button" class="btn btn-secondary">Close</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>

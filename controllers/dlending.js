@@ -13,7 +13,24 @@ var controller = function (task) {
 controller.index = function (req, res) {
     var creds = req.session.creds
     if (!creds) { res.redirect("/") }
-    lendModel.getBoardgames(function (err, res0) {
+    lendModel.getBoardgames("lc",function (err, res0) {
+        res.cookie('lending', 'lc');
+        res.render("pages/lending/index", {
+            title: "Home",
+            sui: creds,
+            auth: "",
+            lender: res0,
+            data: [],
+            sts: false
+        });
+    })
+};
+//serials Lending
+controller.SerialsLend = function (req, res) {
+    var creds = req.session.creds
+    if (!creds) { res.redirect("/") }
+    lendModel.getBoardgames("sc",function (err, res0) {
+        res.cookie('lending', 'sc');
         res.render("pages/lending/index", {
             title: "Home",
             sui: creds,
@@ -101,9 +118,11 @@ controller.locker = function (req, res) {
 controller.save = function (req, res) {
     var data = req.body;
     lendModel.checkBoardGames(data.tcode, function (err, result0) {
+        var lending = req.cookies.lending;
+        //console.log(lending)
         var cnt = Object.keys(result0).length;
         if (cnt == 1) {
-            lendModel.ingestTransaction(data, function (err, result) {
+            lendModel.ingestTransaction(data,lending, function (err, result) {
                 if (!result || err) {
                     res.send({ error: "Error in saving" })
                 } else {
@@ -187,6 +206,7 @@ controller.lend = function (req, res) {
     if (!creds) { res.redirect("/") }
     var id = req.body.id;
     var type = req.body.type;
+    
     if (type == 'SID') {
         lendModel.getpatronbyIDTotaday(id, function (err, result) {
             //console.log(result)

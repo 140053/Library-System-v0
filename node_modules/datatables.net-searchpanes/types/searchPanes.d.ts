@@ -1,18 +1,17 @@
 /// <reference types="jquery" />
 /// <reference types="datatables.net" />
-import * as typeInterfaces from './panesType';
 export declare function setJQuery(jq: any): void;
-import SearchPane from './searchPane';
+import { IClasses, IDefaults, IDOM, IS } from './panesType';
+import SearchPane from './SearchPane';
 export default class SearchPanes {
     private static version;
     private static classes;
     private static defaults;
-    classes: typeInterfaces.IClasses;
-    dom: typeInterfaces.IDOM;
-    c: typeInterfaces.IDefaults;
-    s: typeInterfaces.IS;
-    regenerating: boolean;
-    constructor(paneSettings: any, opts: any, fromInit?: boolean);
+    classes: IClasses;
+    dom: IDOM;
+    c: IDefaults;
+    s: IS;
+    constructor(paneSettings: any, opts: any, fromPreInit?: boolean, paneClass?: typeof SearchPane);
     /**
      * Clear the selections of all of the panes
      */
@@ -26,21 +25,39 @@ export default class SearchPanes {
      */
     rebuild(targetIdx?: boolean | number, maintainSelection?: boolean): SearchPane | SearchPane[];
     /**
-     * Redraws all of the panes
-     */
-    redrawPanes(rebuild?: boolean): void;
-    /**
      * Resizes all of the panes
      */
     resizePanes(): SearchPanes;
     /**
+     * Holder method that is userd in SearchPanesST to set listeners that have an effect on other panes
+     *
+     * @param isPreselect boolean to indicate if the preselect array is to override the current selection list.
+     */
+    protected _initSelectionListeners(isPreselect: boolean): void;
+    /**
+     * Blank method that is overridden in SearchPanesST to retrieve the totals from the server data
+     */
+    protected _serverTotals(): void;
+    /**
+     * Set's the xhr listener so that SP can extact appropriate data from the response
+     */
+    protected _setXHR(): void;
+    /**
+     * Set's the function that is to be performed when a state is loaded
+     *
+     * Overridden by the method in SearchPanesST
+     */
+    protected _stateLoadListener(): void;
+    /**
+     * Updates the selectionList when cascade is not in place
+     *
+     * Overridden in SearchPanesST
+     */
+    protected _updateSelection(): void;
+    /**
      * Attach the panes, buttons and title to the document
      */
     private _attach;
-    /**
-     * Attach the top row containing the filter count and clear all button
-     */
-    private _attachExtras;
     /**
      * If there are no panes to display then this method is called to either
      * display a message in their place or hide them completely.
@@ -49,44 +66,31 @@ export default class SearchPanes {
     /**
      * Attaches the panes to the document and displays a message or hides if there are none
      */
-    private _attachPaneContainer;
+    protected _attachPaneContainer(): void;
     /**
-     * Prepares the panes for selections to be made when cascade is active and a deselect has occured
-     *
-     * @param newSelectionList the list of selections which are to be made
+     * Checks which panes are collapsed and then performs relevant actions to the collapse/show all buttons
      */
-    private _cascadeRegen;
+    private _checkCollapse;
     /**
      * Attaches the message to the document but does not add any panes
      */
     private _checkMessage;
     /**
-     * Checks which panes are collapsed and then performs relevant actions to the collapse/show all buttons
-     *
-     * @param pane The pane to be checked
-     */
-    private _checkCollapse;
-    /**
      * Collapses all of the panes
      */
     private _collapseAll;
     /**
-     * Escape html characters within a string
+     * Finds a pane based upon the name of that pane
      *
-     * @param txt the string to be escaped
-     * @returns the escaped string
+     * @param name string representing the name of the pane
+     * @returns SearchPane The pane which has that name
      */
-    private _escapeHTML;
+    private _findPane;
     /**
      * Gets the selection list from the previous state and stores it in the selectionList Property
      */
     private _getState;
-    /**
-     * Makes all of the selections when cascade is active
-     *
-     * @param newSelectionList the list of selections to be made, in the order they were originally selected
-     */
-    private _makeCascadeSelections;
+    private _makeSelections;
     /**
      * Declares the instances of individual searchpanes dependant on the number of columns.
      * It is necessary to run this once preInit has completed otherwise no panes will be
@@ -97,17 +101,6 @@ export default class SearchPanes {
      * @param opts the options passed into the constructor
      */
     private _paneDeclare;
-    /**
-     * Finds a pane based upon the name of that pane
-     *
-     * @param name string representing the name of the pane
-     * @returns SearchPane The pane which has that name
-     */
-    private _findPane;
-    /**
-     * Works out which panes to update when data is recieved from the server and viewTotal is active
-     */
-    private _serverTotals;
     /**
      * Sets the listeners for the collapse and show all buttons
      * Also sets and performs checks on current panes to see if they are collapsed
@@ -123,13 +116,8 @@ export default class SearchPanes {
      * @param table the parent table for which the searchPanes are being created
      */
     private _startup;
-    private _prepViewTotal;
     /**
      * Updates the number of filters that have been applied in the title
      */
-    private _updateFilterCount;
-    /**
-     * Updates the selectionList when cascade is not in place
-     */
-    private _updateSelection;
+    protected _updateFilterCount(): void;
 }

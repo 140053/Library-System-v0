@@ -6,8 +6,12 @@ const mdl = require("../middleware/auth")
 
 //transaction page
 route.get('/',mdl.isLogin, dapp.index);
+
+route.get('/slend',mdl.isLogin, dapp.SerialsLend);
+
 //hanlde transaction request
 route.post('/lend', dapp.lend);
+
 route.post('/lendlock', dapp.lendlock);
 
 route.post('/save', dapp.save);

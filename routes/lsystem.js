@@ -5,6 +5,8 @@ const dapp = require('../controllers/loginsystem');
 
 
 route.get('/', dapp.login);
+//mod
+route.get('/v1', dapp.loginv1);
 route.post('/', dapp.login);
 
 
